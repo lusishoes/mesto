@@ -1,0 +1,63 @@
+.root {
+    font-family: 'Inter', sans-serif;
+    margin: 0 auto;
+    background-color: #000000;;
+    max-width: 1280px;
+    text-rendering: optimizeLegibility;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+}
+
+.header {
+    max-width: 880px;
+    border: 1px red solid;
+    border-bottom: 1px solid #545454;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header__logo {
+    margin-top: 45px;
+    margin-bottom: 41px;
+    border: 1px red solid;
+}
+
+.profile {
+    display: flex;
+    flex-direction: row;
+    border: 1px red solid;
+    color: white;
+    max-width: 880px;
+    margin: 0 auto;
+    height: 168.75px;
+}
+
+.profile__data-edit {
+    max-width: 336px;
+    display: flex;
+    flex-direction: column;
+    border: 1px red solid;
+}
+
+.profile__name-edit {
+    display: flex;
+    justify-content: space-between;
+    border: 1px red solid;
+}
+
+.profile__edit-button {
+    width: 24px;
+    height: 24px;
+    align-self: center;
+    border: 1px red solid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.add-button {
+    border: 1px red solid;
+}
