@@ -14,7 +14,7 @@
 
 .header {
     max-width: 880px;
-    border: 1px red solid;
+    /* border: 1px red solid; */
     border-bottom: 1px solid #545454;
     margin: 0 auto;
     display: flex;
@@ -25,13 +25,13 @@
 .header__logo {
     margin-top: 45px;
     margin-bottom: 41px;
-    border: 1px red solid;
+    /* border: 1px red solid; */
 }
 
 .profile {
     display: flex;
     flex-direction: row;
-    border: 1px red solid;
+    /* border: 1px red solid; */
     color: white;
     max-width: 880px;
     margin: 0 auto;
@@ -48,7 +48,7 @@
 .profile__data-edit {
     display: flex;
     flex-direction: column;
-    border: 1px red solid;
+    /* border: 1px red solid; */
 }
 
 .profile__image {
@@ -61,7 +61,7 @@
 .profile__name-edit {
     display: flex;
     justify-content: space-between;
-    border: 1px red solid;
+    /* border: 1px red solid; */
 }
 
 .profile__edit-button {
@@ -76,7 +76,7 @@
 }
 
 .add-button {
-    border: 1px red solid;
+    /* border: 1px red solid; */
 }
 
 .profile__title {
@@ -133,12 +133,12 @@
     background: #FFFFFF;
     border-radius: 10px;
     overflow: hidden;
-    border: 1px red solid;
+    /* border: 1px red solid; */
 }
 
 .elements__image {
     width: 282px;
-    border: 1px red solid;
+    /* border: 1px red solid; */
     height: 282px;
     display: block;
 }
@@ -149,7 +149,7 @@
     margin: 25px 15px 31px 21px;
     display: flex;
     justify-content: space-between;
-    border: 1px red solid;
+    /* border: 1px red solid; */
 }
 
 .elements__text {
@@ -164,7 +164,7 @@
 
 .elements__icon {
     height: 19px;
-    border: 1px red solid;
+    /* border: 1px red solid; */
 }
 
 .footer {
