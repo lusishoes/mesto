@@ -13,16 +13,18 @@
 }
 .popup {
     position: fixed; 
-    width: 1280px;
+    top: 0;
+    left: 0;
+    width: 100%;
     height: 100%;
     background: rgba(0,0,0,0.5); 
-    padding-top: 195px;
-    /* padding-left: 425px; */
     display: none;
+    align-items: center;
+    justify-content: center;
 }
 
 .popup_opened {
-    display: block;
+    display: flex;
 }
 
 .popup__close-icon {
@@ -278,6 +280,11 @@
 .elements__icon {
     height: 19px;
     /* border: 1px red solid; */
+}
+
+.elements__icon:hover {
+    opacity: 0.5;
+    cursor: pointer;
 }
 
 .footer {
