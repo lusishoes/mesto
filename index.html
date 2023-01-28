@@ -92,15 +92,22 @@
     </footer>
 
     <section class="popup">
-        <div class="popup__container">
+        <!--форма отправки-->
+        <form class="popup__container" id="my_form">
             <img src="./images/Close Icon.svg" alt="закрыть" class="popup__close-icon">
             <h3 class="popup__title">Редактировать профиль</h3>
-                <input type="text" placeholder="Имя" class="input__text input__text_type_name" type="text">
-                <input type="text" placeholder="О себе" class="input__text input__text_type_occupation" type="text">
+            <!--инпут для имени-->
+                <label for="name"></label>
+                <input type="text" placeholder="Имя" class="input__text input__text_type_name" type="text" required name="name">
+            <!--инпут для рода деятельности-->
+            <label for="occupation"></label>
+                <input type="text" placeholder="О себе" class="input__text input__text_type_occupation" type="text" required name="occupation">
+            <!--кнопка подтверждения отправки-->
             <button class="popup__button" type="submit">
                 <p class="popup__button-text">Сохранить</p>
             </button>
-        </div>
+        </form>
+
     </section>
     <script src="./scripts/script.js"></script>
 </body>
