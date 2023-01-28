@@ -19,8 +19,9 @@
     height: 100%;
     background: rgba(0,0,0,0.5); 
     display: none;
-    align-items: center;
+    /* align-items: center; */
     justify-content: center;
+    padding-top: 195px;
 }
 
 .popup_opened {
@@ -128,6 +129,9 @@
 .profile__data-edit {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    margin-top: 22px;
+    margin-bottom: 25px;
 }
 
 .profile__image {
@@ -140,9 +144,8 @@
 .profile__name-edit {
     display: flex;
     justify-content: space-between;
-    padding-top: 22px;
-    padding-bottom: 16px;
-    align-items: flex-end;
+    align-items: self-start;
+    height: 39px;
 }
 
 .profile__edit-button {
@@ -153,6 +156,7 @@
     justify-content: center;
     align-items: center;
     background-color: #000000;
+    align-self: flex-end;
 }
 
 .profile__edit-button:hover {
@@ -162,24 +166,32 @@
 
 .profile__title {
     margin: 0;
-    height: 39px;
+    /* height: 39px; */
     font-style: normal;
     font-weight: 500;
     font-size: 42px;
     line-height: 48px;
     color: #FFFFFF;
     margin-right: 18px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 297px;
 }
 
 .profile__occupation {
     margin: 0;
-    height: 18px;
-    margin-bottom: 25px;
+    min-height: 18px;
+    /* margin-bottom: 25px; */
     font-style: normal;
     font-weight: 400;
     font-size: 18px;
     line-height: 22px;
     color: #FFFFFF;
+    max-width: 336px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .profile__add-button-wrap {
@@ -378,13 +390,6 @@
         font-size: 14px;
         line-height: 17px;
     }
-
-
- }
- @media (max-width: 1280px) {
-    .popup {
-        width: 100vw;
-    }
  }
 
  @media (max-width: 425px) {
@@ -393,17 +398,24 @@
     height: 24.4px;
     }
 
+    .profile__data-edit {
+    margin-top: 26px;
+    margin-bottom: 36px;
+    }
+
     .profile__title {
     align-self: flex-end;
     font-size: 27px;
     line-height: 33px;
-    height: 26px;
+    /* height: 26px; */
     margin-right: 10px;
+    align-self: baseline;
     }
 
     .profile__name-edit {
-        padding-top: 26px;
-        padding-bottom: 14px;
+     /* padding-top: 26px; */
+     padding-bottom: 14px;
+     height: 26px;       
     }
 
     .profile__edit-image {
@@ -419,6 +431,7 @@
     .profile__occupation {
         font-size: 14px;
         line-height: 17px;
+        margin-bottom: 0;
     }
 
     .footer__copyright {

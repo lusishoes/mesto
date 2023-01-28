@@ -1,114 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./pages/index.css">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./pages/index.css">
+  <title>Document</title>
 </head>
+
 <body class="root">
-
-    <header class="header">
-     
-            <img src="./images/Vector (3).svg" alt="логотип" class="header__logo">
- 
-    </header>
-    <main>
-
+  <header class="header">
+    <img src="./images/Vector (3).svg" alt="логотип" class="header__logo">
+  </header>
+  <main>
     <section class="profile">
-        <div class="profile__edit">
-
-            <img src="./images/Жак Ив Кусто.jpg" alt="Жак Ив Кусто" class="profile__image">
-            <div class="profile__data-edit">
-                <div class="profile__name-edit">
-                    <h2 class="profile__title">Жак Ив Кусто</h2>
-                    <button class="profile__edit-button">
-                        <img src="./images/pencil.svg" alt="карандашик" class="profile__edit-image">
-                    </button>
-                </div>
-                <p class="profile__occupation">Исследователь океана</p>
-            </div>
-        </div>
-        <button class="profile__add-button-wrap">
-            <img src="./images/Vector+.svg" alt="+" class="profile__add-button">
-        </button>
-    </section>
-
-    <section class="elements">
-
-        <div class="elements__card">
-            <img src="./images/Карачаевск.jpg" alt="Карачаевск" class="elements__image">
-            <div class="elements__description">
-                <p class="elements__text">Карачаевск</p>
-                <img src="./images/heart icon.svg" alt="сердечко" class="elements__icon elements__icon_active">
-            </div>
-        </div>
-
-        <div class="elements__card">
-            <img src="./images/Эльбрус.jpg" alt="Эльбрус" class="elements__image">
-            <div class="elements__description">
-                <p class="elements__text">Гора Эльбрус</p>
-                <img src="./images/heart icon.svg" alt="сердечко" class="elements__icon">
-            </div>
-        </div>
-
-        <div class="elements__card">
-            <img src="./images/Домбай.jpg" alt="Домбай" class="elements__image">
-            <div class="elements__description">
-                <p class="elements__text">Домбай</p>
-                <img src="./images/heart icon.svg" alt="сердечко" class="elements__icon">
-            </div>
-        </div>
-
-        <div class="elements__card">
-            <img src="./images/Карачаевск.jpg" alt="Карачаевск" class="elements__image">
-            <div class="elements__description">
-                <p class="elements__text">Карачаевск</p>
-                <img src="./images/heart icon.svg" alt="сердечко" class="elements__icon">
-            </div>
-        </div>
-
-        <div class="elements__card">
-            <img src="./images/Эльбрус.jpg" alt="Эльбрус" class="elements__image">
-            <div class="elements__description">
-                <p class="elements__text">Гора Эльбрус</p>
-                <img src="./images/heart icon.svg" alt="сердечко" class="elements__icon">
-            </div>
-        </div>
-
-        <div class="elements__card">
-            <img src="./images/Домбай.jpg" alt="Домбай" class="elements__image">
-            <div class="elements__description">
-                <p class="elements__text">Домбай</p>
-                <img src="./images/heart icon.svg" alt="сердечко" class="elements__icon">
-            </div>
-        </div>
-    </section>
-
-</main>
-    <footer class="footer">
-        <p class="footer__copyright">© 2020 Mesto Russia</p>
-    </footer>
-
-    <section class="popup">
-        <!--форма отправки-->
-        <form class="popup__container" id="my_form">
-            <img src="./images/Close Icon.svg" alt="закрыть" class="popup__close-icon">
-            <h3 class="popup__title">Редактировать профиль</h3>
-            <!--инпут для имени-->
-                <label for="name"></label>
-                <input type="text" placeholder="Имя" class="input__text input__text_type_name" type="text" required name="name">
-            <!--инпут для рода деятельности-->
-            <label for="occupation"></label>
-                <input type="text" placeholder="О себе" class="input__text input__text_type_occupation" type="text" required name="occupation">
-            <!--кнопка подтверждения отправки-->
-            <button class="popup__button" type="submit">
-                <p class="popup__button-text">Сохранить</p>
+      <div class="profile__edit">
+        <img src="./images/Жак Ив Кусто.jpg" alt="Жак Ив Кусто" class="profile__image">
+        <div class="profile__data-edit">
+          <div class="profile__name-edit">
+            <h2 class="profile__title">Жак-Ив Кусто</h2>
+            <button class="profile__edit-button">
+              <img src="./images/pencil.svg" alt="карандашик" class="profile__edit-image">
             </button>
-        </form>
-
+          </div>
+          <p class="profile__occupation">Исследователь океана</p>
+        </div>
+      </div>
+      <button class="profile__add-button-wrap">
+        <img src="./images/Vector+.svg" alt="+" class="profile__add-button">
+      </button>
     </section>
-    <script src="./scripts/script.js"></script>
+    <section class="elements">
+      <div class="elements__card">
+        <img src="./images/Карачаевск.jpg" alt="Карачаевск" class="elements__image">
+        <div class="elements__description">
+          <p class="elements__text">Карачаевск</p>
+          <img src="./images/heart icon.svg" alt="сердечко" class="elements__icon elements__icon_active">
+        </div>
+      </div>
+      <div class="elements__card">
+        <img src="./images/Эльбрус.jpg" alt="Эльбрус" class="elements__image">
+        <div class="elements__description">
+          <p class="elements__text">Гора Эльбрус</p>
+          <img src="./images/heart icon.svg" alt="сердечко" class="elements__icon">
+        </div>
+      </div>
+      <div class="elements__card">
+        <img src="./images/Домбай.jpg" alt="Домбай" class="elements__image">
+        <div class="elements__description">
+          <p class="elements__text">Домбай</p>
+          <img src="./images/heart icon.svg" alt="сердечко" class="elements__icon">
+        </div>
+      </div>
+      <div class="elements__card">
+        <img src="./images/Карачаевск.jpg" alt="Карачаевск" class="elements__image">
+        <div class="elements__description">
+          <p class="elements__text">Карачаевск</p>
+          <img src="./images/heart icon.svg" alt="сердечко" class="elements__icon">
+        </div>
+      </div>
+      <div class="elements__card">
+        <img src="./images/Эльбрус.jpg" alt="Эльбрус" class="elements__image">
+        <div class="elements__description">
+          <p class="elements__text">Гора Эльбрус</p>
+          <img src="./images/heart icon.svg" alt="сердечко" class="elements__icon">
+        </div>
+      </div>
+      <div class="elements__card">
+        <img src="./images/Домбай.jpg" alt="Домбай" class="elements__image">
+        <div class="elements__description">
+          <p class="elements__text">Домбай</p>
+          <img src="./images/heart icon.svg" alt="сердечко" class="elements__icon">
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="footer">
+    <p class="footer__copyright">© 2020 Mesto Russia</p>
+  </footer>
+  <section class="popup">
+    <!--форма отправки-->
+    <form class="popup__container" id="my_form">
+      <img src="./images/Close Icon.svg" alt="закрыть" class="popup__close-icon">
+      <h3 class="popup__title">Редактировать профиль</h3>
+      <!--инпут для имени-->
+      <label for="name"></label>
+      <input type="text" placeholder="Имя" class="input__text input__text_type_name" type="text" required name="name">
+      <!--инпут для рода деятельности-->
+      <label for="occupation"></label>
+      <input type="text" placeholder="О себе" class="input__text input__text_type_occupation" type="text" required name="occupation">
+      <!--кнопка подтверждения отправки-->
+      <button class="popup__button" type="submit">
+        <p class="popup__button-text">Сохранить</p>
+      </button>
+    </form>
+  </section>
+  <script src="./scripts/script.js"></script>
 </body>
+
 </html>
