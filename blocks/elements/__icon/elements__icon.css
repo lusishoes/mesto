@@ -1,0 +1,8 @@
+.elements__icon {
+    height: 19px;
+}
+
+.elements__icon:hover {
+    opacity: 0.5;
+    cursor: pointer;
+}

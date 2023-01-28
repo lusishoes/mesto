@@ -1,0 +1,14 @@
+.profile__name-edit {
+    display: flex;
+    justify-content: space-between;
+    align-items: self-start;
+    height: 39px;
+}
+
+@media (max-width: 768px) {
+.profile__name-edit {
+    padding-bottom: 14px;
+    height: 26px;   
+    align-self: center;    
+}
+}
