@@ -3,6 +3,9 @@
 let popup = document.querySelector('.popup');
 let editBtn = document.querySelector('.profile__edit-button');
 let closeBtn = document.querySelector('.popup__close-icon');
+let formPopup = document.querySelector('.popup__container') ;
+let nameInput = document.querySelector('.profile__title');
+let occupationInput = document.querySelector('.profile__occupation');
 
 const handleAboutButtonClick = () => { 
     popup.classList.add('popup_opened');
@@ -16,10 +19,6 @@ const handleCloseButtonClick = () => {
 
 editBtn.addEventListener('click', handleAboutButtonClick);
 closeBtn.addEventListener('click', handleCloseButtonClick);
-
-let formPopup = document.querySelector('.popup__container') ;
-let nameInput = document.querySelector('.profile__title');
-let occupationInput = document.querySelector('.profile__occupation');
 
 formPopup.addEventListener('submit', function(e){
     e.preventDefault();
