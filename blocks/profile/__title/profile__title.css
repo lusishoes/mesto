@@ -14,12 +14,9 @@
 
 @media (max-width: 768px) {
 .profile__title {
-    align-self: flex-end;
     font-size: 27px;
     line-height: 1.22;
     margin-right: 10px;
-    align-self: baseline;
     max-width: 200px;
     margin-left: 65px;
-}
-}
+}}
