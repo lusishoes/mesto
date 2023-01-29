@@ -9,8 +9,8 @@ let occupationInput = document.querySelector('.profile__occupation');
 
 const handleAboutButtonClick = () => { 
     popup.classList.add('popup_opened');
-    formPopup.querySelector('.popup_input_name').value = nameInput.textContent;
-    formPopup.querySelector('.popup_input_occupation').value = occupationInput.textContent;
+    formPopup.querySelector('.popup__input-name').value = nameInput.textContent;
+    formPopup.querySelector('.popup__input-occupation').value = occupationInput.textContent;
 }
 
 const handleCloseButtonClick = () => { 
@@ -22,8 +22,8 @@ closeBtn.addEventListener('click', handleCloseButtonClick);
 
 formPopup.addEventListener('submit', function(e){
     e.preventDefault();
-        let nameInputValue = formPopup.querySelector('.popup_input_name').value;
-        let occupationInputValue = formPopup.querySelector('.popup_input_occupation').value;
+        let nameInputValue = formPopup.querySelector('.popup__input-name').value;
+        let occupationInputValue = formPopup.querySelector('.popup__input-occupation').value;
     if(nameInputValue !== '' && occupationInputValue !== '') {
         nameInput.textContent = nameInputValue;
         occupationInput.textContent = occupationInputValue;

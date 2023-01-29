@@ -1,16 +1,16 @@
-.popup__input-text {
+.popup__input-name {
     height: 27px;
     width: 358px;
-    border: none;
+    border: 0;
     border-bottom: 1px solid #000000;
     align-self: center;
 }
-.popup__input-text:last-of-type{
+.popup__input-name:last-of-type{
     margin-top: 30px;
 }
 
 @media (max-width: 768px) {
-    .popup__input-text {
+    .popup__input-name {
         width: 238px;
     }
 }
