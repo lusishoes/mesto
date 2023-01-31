@@ -17,9 +17,6 @@ const handleCloseButtonClick = () => {
     popup.classList.remove('popup_opened');
 }
 
-editBtn.addEventListener('click', handleAboutButtonClick);
-closeBtn.addEventListener('click', handleCloseButtonClick);
-
 formPopup.addEventListener('submit', function(e){
     e.preventDefault();
         let nameInputValue = formPopup.querySelector('.popup__input_type_name').value;
@@ -30,3 +27,6 @@ formPopup.addEventListener('submit', function(e){
     }
     handleCloseButtonClick();   
 });
+
+editBtn.addEventListener('click', handleAboutButtonClick);
+closeBtn.addEventListener('click', handleCloseButtonClick);
