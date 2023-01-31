@@ -1,11 +1,16 @@
 .popup__close-icon {
     width: 32px;
-    height: auto;
+    height: 32px;
     display: block;
-    margin-left: 438px;
-    margin-top: -40px;
+    background-image: url(../../../images/close-icon.svg);
+    background-size: 100% 100%;
     cursor: pointer;
     position: absolute;
+    border: none;
+    background-color: transparent;
+    align-self: flex-end;
+    top: -40px;
+    right: -40px;
 }
 
 .popup__close-icon:hover {
@@ -15,8 +20,8 @@
 @media (max-width: 768px) {
     .popup__close-icon {
         width: 20px;
-        height: auto;
-        margin-top: -36px;
-        margin-left: 262px;
+        height: 20px;
+        top: -36px;
+        right: 0;
     }
 }

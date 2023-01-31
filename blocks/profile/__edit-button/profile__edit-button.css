@@ -5,8 +5,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #000000;
+    background-color: transparent;
     align-self: flex-end;
+    margin-bottom: 10px;
 }
 
 .profile__edit-button:hover {
@@ -19,5 +20,6 @@
     width: 18px;
     height: 18px;
     margin-right: 38px;
+    margin-bottom: 5px;
     }
 }

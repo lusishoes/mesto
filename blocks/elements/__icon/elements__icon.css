@@ -1,5 +1,9 @@
 .elements__icon {
     height: 19px;
+    width: 22px;
+    background-image: url(../../../images/heart\ icon.svg);
+    background-color: transparent;
+    border: none;
 }
 
 .elements__icon:hover {

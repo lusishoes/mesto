@@ -5,6 +5,11 @@
     align-self: center;
     background-color: #000000;
     color: white;
+    font-size: 18px;
+    line-height: 1.22;
+    border-radius: 2px;
+    border: 0;
+    margin-bottom: 37px;
 }
 
 .popup__button:hover {
@@ -15,7 +20,10 @@
 @media (max-width: 768px) {
     .popup__button {
         width: 238px;
-        margin-top: 45px;
+        margin-top: 39px;
         height: 46px;
+        margin-bottom: 25px;
+        font-size: 14px;
+        line-height: 1.21;
     }
 }

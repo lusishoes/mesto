@@ -7,11 +7,6 @@
     background: rgba(0,0,0,0.5);
     display: none;
     justify-content: center;
-    padding-top: 195px;    
+    align-items: center;
 }
 
-@media (max-width: 768px) {
-    .popup {
-        padding-top: 123px;
-    }
-}
