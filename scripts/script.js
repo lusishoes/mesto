@@ -3,7 +3,7 @@
 let popup = document.querySelector('.popup');
 let editBtn = document.querySelector('.profile__edit-button');
 let closeBtn = document.querySelector('.popup__close-icon');
-let formPopup = document.querySelector('.popup__container') ;
+let formPopup = document.querySelector('.popup__form') ;
 let nameInput = document.querySelector('.profile__title');
 let occupationInput = document.querySelector('.profile__occupation');
 
