@@ -22,10 +22,13 @@
 @import url(../blocks/profile/__add-button/profile__add-button.css);
 @import url(../blocks/elements/elements.css);
 @import url(../blocks/elements/__card/elements__card.css);
+@import url(../blocks/elements/__card-image/elements__card-image.css);
 @import url(../blocks/elements/__image/elements__image.css);
 @import url(../blocks/elements/__description/elements__description.css);
 @import url(../blocks/elements/__text/elements__text.css);
 @import url(../blocks/elements/__icon/elements__icon.css);
+@import url(../blocks/elements/__icon/_active/elements__icon_active.css);
+@import url(../blocks/elements/__card-bucket/elements__card-bucket.css);
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__copyright/footer__copyright.css);
 @import url(../blocks/popup/__button-text/popup__button-text.css);
