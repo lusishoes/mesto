@@ -1,6 +1,6 @@
 'use strict'
 
-let popupEdit = document.querySelector('.popup_type_edit');
+let popupEdit = document.querySelector('.popup');
 let editBtn = document.querySelector('.profile__edit-button');
 let closeBtn = document.querySelector('.popup__close-icon');
 let formPopup = document.querySelector('.popup__form') ;
@@ -8,17 +8,31 @@ let nameInput = document.querySelector('.profile__title');
 let occupationInput = document.querySelector('.profile__occupation');
 let cardTemplate = document.querySelector('.elements__card-template').content;
 let cardsList = document.querySelector('.elements');
+let popupContainter = document.querySelector('.popup__container');
+let popupadd = document.querySelector('.popup__add');
+let popupwrapbtn = document.querySelector('.profile__add-button-wrap');
+let popupChangeName = document.querySelector('.popup__edit');
+let closePopupEdit = document.querySelector('.popup__close-icon_edit');
+let closePopupAdd = document.querySelector('.popup__close-icon_add');
 
-const handleAboutButtonClick = () => { 
-  popupEdit.classList.add('popup_opened');
+
+// функция открытия попапа редактирования
+editBtn.addEventListener('click', function() {
+    openPopup(popupChangeName);
     formPopup.querySelector('.popup__input_type_name').value = nameInput.textContent;
-    formPopup.querySelector('.popup__input_type_occupation').value = occupationInput.textContent;
+    formPopup.querySelector('.popup__input_type_occupation').value = occupationInput.textContent;  
+});
+
+// функция открытия любого попапа
+function openPopup(popupElement) {
+  popupElement.classList.add('popup_opened');
+}
+// функция закрытия любого попапа
+function closePopup(popupElement) {
+  popupElement.classList.remove('popup_opened');
 }
 
-const handleCloseButtonClick = () => { 
-  popupEdit.classList.remove('popup_opened');
-}
-
+// ивент листенер меняющий имя и деятельность
 formPopup.addEventListener('submit', function(e){
     e.preventDefault();
         let nameInputValue = formPopup.querySelector('.popup__input_type_name').value;
@@ -27,11 +41,22 @@ formPopup.addEventListener('submit', function(e){
         nameInput.textContent = nameInputValue;
         occupationInput.textContent = occupationInputValue;
     }
-    handleCloseButtonClick();   
+    closePopup(popupChangeName);   
 });
 
-editBtn.addEventListener('click', handleAboutButtonClick);
-closeBtn.addEventListener('click', handleCloseButtonClick);
+// ивент лисенер для добавления карточки
+popupwrapbtn.addEventListener('click', function() {
+  openPopup(popupadd);
+});
+
+closePopupEdit.addEventListener('click', function() {
+  closePopup(popupChangeName);
+});
+
+closePopupAdd.addEventListener('click', function() {
+  closePopup(popupadd);
+});
+
 // добавлние на страницу из массива
 const initialCards = [
     {
@@ -60,6 +85,7 @@ const initialCards = [
     }
   ];
 
+  // вывод карточек
   initialCards.forEach((e) => {
     const cardElement = cardTemplate.cloneNode(true);
     cardElement.querySelector('.elements__card-image').src = e.link;  
@@ -67,16 +93,16 @@ const initialCards = [
     
     cardsList.append(cardElement);
   });
-
+// добавление/убирание лайка
   const addheartIcon = (evt) => {
     let target = evt.target;
     target.classList.toggle('elements__icon_active');
   };
-
+ // удаление карточки
   const handleDelete = (evt) => {
     evt.target.closest('.elements__card').remove();
   };
-
+// определяем блок где был клик либо по сердечку либо корзине -> вызываем функции выше
   cardsList.addEventListener('click', (evt) => {
     console.log(evt.target);
     if (evt.target.classList.contains('elements__icon')) {
