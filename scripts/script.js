@@ -7,6 +7,7 @@ let formPopup = document.querySelector('.popup__form') ;
 let nameInput = document.querySelector('.profile__title');
 let occupationInput = document.querySelector('.profile__occupation');
 let cardTemplate = document.querySelector('.elements__card-template').content;
+
 let cardsList = document.querySelector('.elements');
 let popupContainter = document.querySelector('.popup__container');
 let popupadd = document.querySelector('.popup__add');
@@ -14,7 +15,11 @@ let popupwrapbtn = document.querySelector('.profile__add-button-wrap');
 let popupChangeName = document.querySelector('.popup__edit');
 let closePopupEdit = document.querySelector('.popup__close-icon_edit');
 let closePopupAdd = document.querySelector('.popup__close-icon_add');
+let formPopupCard = document.querySelector('.popup__form-card');
 
+
+let popupImageBlock = document.querySelector('.popup__image');
+let popupCloseIconImage = document.querySelector('.popup__close-icon_image');
 
 // функция открытия попапа редактирования
 editBtn.addEventListener('click', function() {
@@ -44,6 +49,29 @@ formPopup.addEventListener('submit', function(e){
     closePopup(popupChangeName);   
 });
 
+// ивент добавления карточки
+formPopupCard.addEventListener('submit', function(e){
+    e.preventDefault();
+  let inputPlaceName = formPopupCard.querySelector('.popup__input_type_place-name');
+  let inputPlaceImage = formPopupCard.querySelector('.popup__input_type_image-link');
+  addCard(inputPlaceName.value, inputPlaceImage.value);
+
+  closePopup(popupadd);
+
+  inputPlaceName.value = '';
+  inputPlaceImage.value = '';
+});
+
+// функция добавления карточки
+function addCard(place_name, image_link) {
+  const cardTemplate = document.querySelector('.elements__card-template').content;
+  const cardElement = cardTemplate.querySelector('.elements__card').cloneNode(true);
+  cardElement.querySelector('.elements__text').textContent =  place_name;
+  cardElement.querySelector('.elements__card-image').src = image_link;
+
+cardsList.prepend(cardElement);
+}
+
 // ивент лисенер для добавления карточки
 popupwrapbtn.addEventListener('click', function() {
   openPopup(popupadd);
@@ -55,6 +83,10 @@ closePopupEdit.addEventListener('click', function() {
 
 closePopupAdd.addEventListener('click', function() {
   closePopup(popupadd);
+});
+
+popupCloseIconImage.addEventListener('click', function() {
+  closePopup(popupImageBlock);
 });
 
 // добавлние на страницу из массива
@@ -102,6 +134,14 @@ const initialCards = [
   const handleDelete = (evt) => {
     evt.target.closest('.elements__card').remove();
   };
+
+  const handleOpenImagePopup = (evt) => {
+    openPopup(popupImageBlock);
+    let target = evt.target;
+    document.querySelector('.popup__image-block').src = target.src;
+    
+
+  }
 // определяем блок где был клик либо по сердечку либо корзине -> вызываем функции выше
   cardsList.addEventListener('click', (evt) => {
     console.log(evt.target);
@@ -109,5 +149,9 @@ const initialCards = [
       addheartIcon(evt);
     } else if (evt.target.classList.contains('elements__card-bucket')) {
       handleDelete(evt);
+    } else if (evt.target.classList.contains('elements__card-image')) {
+      handleOpenImagePopup(evt)
     }
 });
+
+

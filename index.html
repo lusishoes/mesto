@@ -36,6 +36,7 @@
     <section class="elements">
     </section>
   </main>
+
   <template class="elements__card-template">
     <article class="elements__card">
       <img src="./images/Trash.svg" alt="корзина" class="elements__card-bucket">
@@ -46,9 +47,11 @@
       </div>
     </article>
   </template>
+
   <footer class="footer">
     <p class="footer__copyright">© 2023 Mesto Russia</p>
   </footer>
+
   <section class="popup popup__edit">
     <div class="popup__container">
       <form class="popup__form" name="popup-form"> 
@@ -60,17 +63,25 @@
       </form>
     </div>
   </section>
+
   <section class="popup popup__add">
     <div class="popup__container">
-      <form class="popup__form" name="popup-form"> 
+      <form class="popup__form popup__form-card" name="popup-form"> 
         <button class="popup__close-icon popup__close-icon_add" type="reset"></button> 
         <h3 class="popup__title">Новое место</h3> 
-        <input type="text" placeholder="Название" class="popup__input popup__input_type_name" name="name" required> 
-        <input type="text" placeholder="Ссылка на картинку" class="popup__input popup__input_type_occupation" name="occupation" required> 
+        <input type="text" placeholder="Название" class="popup__input popup__input_type_place-name" name="place-name" required> 
+        <input type="text" placeholder="Ссылка на картинку" class="popup__input popup__input_type_image-link" name="image-link" required> 
         <button class="popup__button" type="submit">Сохранить</button> 
       </form>
     </div>
   </section>
+
+  <section class="popup popup__image">
+        <button class="popup__close-icon popup__close-icon_image" type="reset"></button> 
+        <img src="" alt="текущее изображение" class="popup__image-block">
+        <h3 class="popup__image-signature"></h3> 
+  </section>
+
   <script src="./scripts/script.js"></script>
 </body>
 
