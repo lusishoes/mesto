@@ -68,7 +68,7 @@ function addCard(place_name, image_link) {
   const cardElement = cardTemplate.querySelector('.elements__card').cloneNode(true);
   cardElement.querySelector('.elements__text').textContent =  place_name;
   cardElement.querySelector('.elements__card-image').src = image_link;
-
+  cardElement.querySelector('.elements__card-image').alt = place_name;
 cardsList.prepend(cardElement);
 }
 
@@ -122,7 +122,8 @@ const initialCards = [
     const cardElement = cardTemplate.cloneNode(true);
     cardElement.querySelector('.elements__card-image').src = e.link;  
     cardElement.querySelector('.elements__text').textContent = e.name;
-    
+    cardElement.querySelector('.elements__card-image').alt = e.name;
+
     cardsList.append(cardElement);
   });
 // добавление/убирание лайка
@@ -135,13 +136,20 @@ const initialCards = [
     evt.target.closest('.elements__card').remove();
   };
 
+
   const handleOpenImagePopup = (evt) => {
     openPopup(popupImageBlock);
-    let target = evt.target;
-    document.querySelector('.popup__image-block').src = target.src;
-    
+    // картинка
+    let target_source = evt.target;
+    console.log(evt.target);
 
+    document.querySelector('.popup__image-signature').textContent = target_source.alt;
+    // ссылка на картинку
+    document.querySelector('.popup__image-block').src = target_source.src;
+   
+    //document.querySelector('.popup__image-signature').textContent = target_source.nextElementSibling.firstElementChild.textContent;
   }
+
 // определяем блок где был клик либо по сердечку либо корзине -> вызываем функции выше
   cardsList.addEventListener('click', (evt) => {
     console.log(evt.target);
@@ -150,8 +158,8 @@ const initialCards = [
     } else if (evt.target.classList.contains('elements__card-bucket')) {
       handleDelete(evt);
     } else if (evt.target.classList.contains('elements__card-image')) {
-      handleOpenImagePopup(evt)
-    }
+      handleOpenImagePopup(evt);
+   }
 });
 
 
