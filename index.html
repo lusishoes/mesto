@@ -52,10 +52,10 @@
     <p class="footer__copyright">© 2023 Mesto Russia</p>
   </footer>
 
-  <section class="popup popup__edit">
+  <section class="popup popup_theme_edit-profile"> <!--added--->
     <div class="popup__container">
       <form class="popup__form" name="popup-form"> 
-        <button class="popup__close-icon popup__close-icon_edit" type="reset"></button> 
+        <button class="popup__close-icon popup__close-icon_theme_edit-profile" type="reset"></button> 
         <h3 class="popup__title">Редактировать профиль</h3> 
         <input type="text" placeholder="Имя" class="popup__input popup__input_type_name" name="name" required> 
         <input type="text" placeholder="О себе" class="popup__input popup__input_type_occupation" name="occupation" required> 
@@ -64,10 +64,10 @@
     </div>
   </section>
 
-  <section class="popup popup__add">
+  <section class="popup popup_theme_add-card">
     <div class="popup__container">
       <form class="popup__form popup__form-card" name="popup-form"> 
-        <button class="popup__close-icon popup__close-icon_add" type="reset"></button> 
+        <button class="popup__close-icon popup__close-icon_theme_add-card" type="reset"></button> 
         <h3 class="popup__title">Новое место</h3> 
         <input type="text" placeholder="Название" class="popup__input popup__input_type_place-name" name="place-name" required> 
         <input type="text" placeholder="Ссылка на картинку" class="popup__input popup__input_type_image-link" name="image-link" required> 
@@ -76,8 +76,8 @@
     </div>
   </section>
 
-  <section class="popup popup__image">
-    <button class="popup__close-icon popup__close-icon_image" type="reset"></button> 
+  <section class="popup popup_theme_open-image">
+    <button class="popup__close-icon popup__close-icon_theme_open-image" type="reset"></button> 
     <img src="" alt="" class="popup__image-block">
     <h3 class="popup__image-signature"></h3> 
   </section>
