@@ -1,23 +1,21 @@
 'use strict'
-let popupEdit = document.querySelector('.popup');
-let editBtn = document.querySelector('.profile__edit-button');
-let closeBtn = document.querySelector('.popup__close-icon');
-let formPopup = document.querySelector('.popup__form');
+
+const editBtn = document.querySelector('.profile__edit-button');
+const formPopup = document.querySelector('.popup__form');
 let nameInput = document.querySelector('.profile__title');
 let occupationInput = document.querySelector('.profile__occupation');
 let cardTemplate = document.querySelector('.elements__card-template').content;
 let cardsList = document.querySelector('.elements');
-let popupContainter = document.querySelector('.popup__container');
-let popupWrapBtn = document.querySelector('.profile__add-button-wrap');
+const popupWrapBtn = document.querySelector('.profile__add-button-wrap');
 let formPopupCard = document.querySelector('.popup__form-card');
 
-let popupProfileСloseIcon = document.querySelector('.popup__close-icon_theme_edit-profile');
-let popupCardCloseIcon = document.querySelector('.popup__close-icon_theme_add-card');
-let popupImageCloseIcon = document.querySelector('.popup__close-icon_theme_open-image');
+const popupProfileСloseIcon = document.querySelector('.popup__close-icon_theme_edit-profile');
+const popupCardCloseIcon = document.querySelector('.popup__close-icon_theme_add-card');
+const popupImageCloseIcon = document.querySelector('.popup__close-icon_theme_open-image');
 
-let popupProfileSection = document.querySelector('.popup_theme_edit-profile');
-let popupAddCardSection = document.querySelector('.popup_theme_add-card');
-let popupImageSection = document.querySelector('.popup_theme_open-image');
+const popupProfileSection = document.querySelector('.popup_theme_edit-profile');
+const popupAddCardSection = document.querySelector('.popup_theme_add-card');
+const popupImageSection = document.querySelector('.popup_theme_open-image');
 
 function openPopup(popupElement) {
     popupElement.classList.add('popup_opened');
@@ -78,11 +76,11 @@ const deleteCard = (evt) => {
     evt.target.closest('.elements__card').remove();
 };
 const openImagePopup = (evt) => {
-        openPopup(popupImageSection);
-        let targetSource = evt.target;
-        document.querySelector('.popup__image-signature').textContent = targetSource.alt;
-        document.querySelector('.popup__image-block').src = targetSource.src;
-    }
+    openPopup(popupImageSection);
+    let targetSource = evt.target;
+    document.querySelector('.popup__image-signature').textContent = targetSource.alt;
+    document.querySelector('.popup__image-block').src = targetSource.src;
+}
     
 popupWrapBtn.addEventListener('click', function() {
     openPopup(popupAddCardSection);
