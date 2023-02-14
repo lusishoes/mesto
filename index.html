@@ -36,54 +36,48 @@
     <section class="elements">
     </section>
   </main>
-
   <template class="elements__card-template">
     <article class="elements__card">
       <img src="./images/Trash.svg" alt="корзина" class="elements__card-bucket">
-      <img src=""  alt="" class="elements__card-image">
+      <img src="" alt="" class="elements__card-image">
       <div class="elements__description">
         <h2 class="elements__text"></h2>
         <button class="elements__icon" type="button"></button>
       </div>
     </article>
   </template>
-
   <footer class="footer">
     <p class="footer__copyright">© 2023 Mesto Russia</p>
   </footer>
-
-  <section class="popup popup_theme_edit-profile"> <!--added--->
+  <section class="popup popup_theme_edit-profile">
     <div class="popup__container">
-      <form class="popup__form" name="popup-form"> 
-        <button class="popup__close-icon popup__close-icon_theme_edit-profile" type="reset"></button> 
-        <h3 class="popup__title">Редактировать профиль</h3> 
-        <input type="text" placeholder="Имя" class="popup__input popup__input_type_name" name="name" required> 
-        <input type="text" placeholder="О себе" class="popup__input popup__input_type_occupation" name="occupation" required> 
-        <button class="popup__button" type="submit">Сохранить</button> 
+      <form class="popup__form" name="popup-form">
+        <button class="popup__close-icon popup__close-icon_theme_edit-profile" type="reset"></button>
+        <h3 class="popup__title">Редактировать профиль</h3>
+        <input type="text" placeholder="Имя" class="popup__input popup__input_type_name" name="name" required>
+        <input type="text" placeholder="О себе" class="popup__input popup__input_type_occupation" name="occupation" required>
+        <button class="popup__button" type="submit">Сохранить</button>
       </form>
     </div>
   </section>
-
   <section class="popup popup_theme_add-card">
     <div class="popup__container">
-      <form class="popup__form popup__form-card" name="popup-form"> 
-        <button class="popup__close-icon popup__close-icon_theme_add-card" type="reset"></button> 
-        <h3 class="popup__title">Новое место</h3> 
-        <input type="text" placeholder="Название" class="popup__input popup__input_type_place-name" name="place-name" required> 
-        <input type="text" placeholder="Ссылка на картинку" class="popup__input popup__input_type_image-link" name="image-link" required> 
-        <button class="popup__button" type="submit">Сохранить</button> 
+      <form class="popup__form popup__form-card" name="popup-form">
+        <button class="popup__close-icon popup__close-icon_theme_add-card" type="reset"></button>
+        <h3 class="popup__title">Новое место</h3>
+        <input type="text" placeholder="Название" class="popup__input popup__input_type_place-name" name="place-name" required>
+        <input type="text" placeholder="Ссылка на картинку" class="popup__input popup__input_type_image-link" name="image-link" required>
+        <button class="popup__button" type="submit">Сохранить</button>
       </form>
     </div>
   </section>
-
   <section class="popup popup_theme_open-image">
     <div class="popup__wrapper">
-      <button class="popup__close-icon popup__close-icon_theme_open-image" type="reset"></button> 
+      <button class="popup__close-icon popup__close-icon_theme_open-image" type="reset"></button>
       <img src="" alt="" class="popup__image-block">
       <h3 class="popup__image-signature"></h3>
-  </div> 
+    </div>
   </section>
-
   <script src="./scripts/script.js"></script>
 </body>
 
