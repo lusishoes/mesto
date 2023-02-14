@@ -126,7 +126,6 @@ formPopupCard.addEventListener('submit', function(e) {
 });
 
 cardsList.addEventListener('click', (evt) => {
-  console.log(evt.target)
     if (evt.target.classList.contains('elements__icon')) {
         addheartIcon(evt);
     } else if (evt.target.classList.contains('elements__card-bucket')) {
