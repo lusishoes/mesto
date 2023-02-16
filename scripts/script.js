@@ -53,10 +53,6 @@ function openPopup(popupElement) {
     popupElement.classList.add('popup_opened');
 }
 
-function closePopup(popupElement) {
-    popupElement.classList.remove('popup_opened');
-}
-
 initialCards.forEach((e) => {
     cardsList.append(createCard(e));
 });
@@ -80,10 +76,14 @@ const deleteCard = (evt) => {
 
 const openImagePopup = (evt) => {
     openPopup(popupImageSection);
-    let targetSource = evt.target;
+    let targetSource = evt.target; 
     popupImageSignature.textContent = targetSource.alt;
     popupImageBlock.src = targetSource.src;
     popupImageBlock.alt = targetSource.alt;
+}
+
+function closePopup(popupElement) {
+    popupElement.classList.remove('popup_opened');
 }
     
 popupWrapBtn.addEventListener('click', function() {
@@ -123,11 +123,8 @@ popupAddCardSection.addEventListener('submit', function(e) {
     e.preventDefault();
     e.link = popupInputImageLink.value;
     e.name = popupInputPlaceName.value;
-    
     cardsList.prepend(createCard(e));
     closePopup(popupAddCardSection);
-    e.target.value.remove();
-    
     popupInputImageLink.value = '';
     popupInputPlaceName.value = '';
 });
