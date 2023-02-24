@@ -18,6 +18,7 @@ const popupInputImageLink = document.querySelector('.popup__input_type_image-lin
 const popupImageSignature = document.querySelector('.popup__image-signature');
 const popupImageBlock = document.querySelector('.popup__image-block');
 
+
 const initialCards = [
     {
       name: 'Архыз',
@@ -118,6 +119,53 @@ popupAddCardSection.addEventListener('submit', function(e) {
     popupInputImageLink.value = '';
     popupInputPlaceName.value = '';
 });
+
+const isValid = (popupListItem, inputElement) => {
+    // проверка валидности конкретного инпута 
+    if (!inputElement.validity.valid) {
+        // инпут не валидент -> передаем то что будет написано если инпут не валиден
+      showInputError(popupListItem,  inputElement, inputElement.validationMessage);
+    } else {
+        // инпут валиден 
+      hideInputError(popupListItem, inputElement);
+    }
+  };
+
+// errorMessage принимает inputElement.validationMessage
+const showInputError = (popupListItem, inputElement, errorMessage) => {
+    // находим span элемент подпись к инпуту 
+    const errorElement = popupListItem.querySelector(`.${inputElement.id}-error`);
+    // показываем что в инпуте ошибка
+    inputElement.classList.add('form__input_type_error');
+    // передаем сообщение об ошибке span-у
+    errorElement.textContent = errorMessage;
+    // добавляем видимость ошибки
+    errorElement.classList.add('form__input-error_active');
+  };
+
+  // удаляем классы видимости ошибки, очищаем span
+  const hideInputError = (popupListItem, inputElement) => {
+    const errorElement = popupListItem.querySelector(`.${inputElement.id}-error`);
+    inputElement.classList.remove('form__input_type_error');
+    errorElement.classList.remove('form__input-error_active');
+    errorElement.textContent = '';
+  };
+
+const setEventListeners = (popupListItem) => {
+    const inputList= Array.from(popupListItem.querySelector('.popup__input'));
+    inputList.forEach((inputElement) => {
+        inputElement.addEventListener('input', () => {
+            isValid(popupListItem, inputElement);
+        });
+    });
+}
+
+const enableValidation = () => {
+    const popupList = Array.from(document.querySelector('.popup'));
+    popupList.forEach((popupListItem) => {
+        setEventListeners(popupListItem);
+    });
+}
 
 cardsList.addEventListener('click', (evt) => {
     if (evt.target.classList.contains('elements__icon')) {
