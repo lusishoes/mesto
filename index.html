@@ -51,26 +51,58 @@
   </footer>
   <section class="popup popup_theme_edit-profile">
     <div class="popup__container">
-      <form class="popup__form popup__form_theme_edit-profile" name="popup-form">
+      <form class="popup__form popup__form_theme_edit-profile" name="popup-form" novalidate>
         <button class="popup__close-icon" type="reset"></button>
         <h3 class="popup__title">Редактировать профиль</h3>
-        <input type="text" placeholder="Имя" class="popup__input popup__input_type_name" name="name" minlength="2" maxlength="40" required>
-        <span class="form__input-error"></span>
-        <input type="text" placeholder="О себе" class="popup__input popup__input_type_occupation" name="occupation" minlength="2" maxlength="200" required>
-        <span class="form__input-error"></span>
+        <input
+          id="input-name" 
+          type="text" 
+          placeholder="Имя" 
+          class="popup__input popup__input_type_name" 
+          name="name" 
+          minlength="2" 
+          maxlength="40" 
+          required
+        >
+        <span id="input-name-error" class="popup__input-error"></span>
+        <input
+          id="input-link" 
+          type="text" 
+          placeholder="О себе" 
+          class="popup__input popup__input_type_occupation" 
+          name="occupation" 
+          minlength="2" 
+          maxlength="200" 
+          required
+        >
+        <span id="input-link-error" class="popup__input-error"></span>
         <button class="popup__button" type="submit">Сохранить</button>
       </form>
     </div>
   </section>
   <section class="popup popup_theme_add-card">
     <div class="popup__container">
-      <form class="popup__form popup__form_theme_add-card" name="popup-form">
+      <form class="popup__form popup__form_theme_add-card" name="popup-form" novalidate>
         <button class="popup__close-icon" type="reset"></button>
         <h3 class="popup__title">Новое место</h3>
-        <input type="text" placeholder="Название" class="popup__input popup__input_type_place-name" name="place-name" required>
-        <span class="form__input-error"></span>
-        <input type="url" placeholder="Ссылка на картинку" class="popup__input popup__input_type_image-link" name="image-link" required>
-        <span class="form__input-error"></span>
+        <input
+          id="input-place-name" 
+          type="text" 
+          placeholder="Название" 
+          class="popup__input popup__input_type_place-name" 
+          name="place-name" 
+          required
+        >
+        <span id="input-place-name-error" class="popup__input-error"></span>
+        <input
+          id="input-image-link" 
+          type="url" 
+          placeholder="Ссылка на картинку" 
+          class="popup__input popup__input_type_image-link" 
+          name="image-link" 
+          required
+        >
+        <span id="input-image-link-error" class="popup__input-error"></span>
         <button class="popup__button" type="submit">Сохранить</button>
       </form>
     </div>
@@ -83,6 +115,7 @@
     </div>
   </section>
   <script src="./scripts/script.js"></script>
+  <script src="./scripts/validate.js"></script>
 </body>
 
 </html>
