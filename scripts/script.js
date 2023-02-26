@@ -99,7 +99,7 @@ editBtn.addEventListener('click', function() {
 });
 
 formPopup.addEventListener('submit', function(e) {
-    e.preventDefault(); // 
+    e.preventDefault(); //
     const nameInputValue = popupInputName.value;
     const occupationInputValue = popupInputOccupation.value;
     if (nameInputValue !== '' && occupationInputValue !== '') {
