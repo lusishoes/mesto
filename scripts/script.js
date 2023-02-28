@@ -17,8 +17,7 @@ const popupInputPlaceName = document.querySelector('.popup__input_type_place-nam
 const popupInputImageLink = document.querySelector('.popup__input_type_image-link');
 const popupImageSignature = document.querySelector('.popup__image-signature');
 const popupImageBlock = document.querySelector('.popup__image-block');
-const popup = document.querySelector('.popup');
-
+const popupButton = document.querySelector('.popup__button');
 
 const initialCards = [
     {
@@ -48,6 +47,8 @@ const initialCards = [
 
 function openPopup(popupElement) {
     popupElement.classList.add('popup_opened');
+    document.addEventListener('keydown', handleEscapeClose);
+    document.addEventListener('click', handleClickClose);
 }
 
 initialCards.forEach((e) => {
@@ -81,6 +82,21 @@ const openImagePopup = (evt) => {
 
 function closePopup(popupElement) {
     popupElement.classList.remove('popup_opened');
+    document.removeEventListener('keydown', handleEscapeClose);
+    document.removeEventListener('click', handleClickClose);
+}
+
+function handleEscapeClose(e) {
+    if(e.keyCode === 27) {
+        const popupOpen = document.querySelector('.popup_opened');
+        closePopup(popupOpen);
+    }
+}
+
+function handleClickClose(e) {
+    if(e.target.classList.contains('popup_opened')) {
+        closePopup(e.target.closest('.popup'));
+    }
 }
   
 closeButtons.forEach((button) => {
@@ -88,18 +104,20 @@ closeButtons.forEach((button) => {
     button.addEventListener('click', () => closePopup(popup));
 });
     
-popupWrapBtn.addEventListener('click', function() {
+popupWrapBtn.addEventListener('click', function(e) {
     openPopup(popupAddCardSection);
+    checkValidation(popupAddCardSection, confiValidation);
 });
 
 editBtn.addEventListener('click', function() {
     openPopup(popupProfileSection);
     popupInputName.value = nameInput.textContent;
     popupInputOccupation.value = occupationInput.textContent;
+    checkValidation(popupProfileSection, confiValidation); 
 });
 
 formPopup.addEventListener('submit', function(e) {
-    e.preventDefault(); //
+    e.preventDefault(); 
     const nameInputValue = popupInputName.value;
     const occupationInputValue = popupInputOccupation.value;
     if (nameInputValue !== '' && occupationInputValue !== '') {
