@@ -47,9 +47,9 @@ const hasInvalidInput = (inputList) => {
 
 const toggleButtonState = (inputList, buttonElement, config) => {
     if (hasInvalidInput(inputList)) {
-      buttonStateDisabled(buttonElement, config);
+      toggleButtonDisabled(buttonElement, config);
     } else {
-      buttonStateActive(buttonElement, config);
+      toggleButtonActive(buttonElement, config);
     }
   };
 
@@ -63,12 +63,12 @@ const toggleButtonState = (inputList, buttonElement, config) => {
     });
   };
 
-  function buttonStateDisabled(buttonElement, config) {
+  function toggleButtonDisabled(buttonElement, config) {
     buttonElement.setAttribute('disabled', true);
     buttonElement.classList.add(config.inactiveButtonClass);
   }    
 
-  function buttonStateActive(buttonElement, config) {
+  function toggleButtonActive(buttonElement, config) {
     buttonElement.removeAttribute('disabled');
     buttonElement.classList.remove(config.inactiveButtonClass);
   }
