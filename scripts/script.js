@@ -87,7 +87,7 @@ function closePopup(popupElement) {
 }
 
 function handleEscapeClose(e) {
-    if(e.keyCode === 27) {
+    if(e.key === 'Escape') {
         const popupOpen = document.querySelector('.popup_opened');
         closePopup(popupOpen);
     }

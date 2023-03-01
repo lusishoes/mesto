@@ -34,6 +34,7 @@ function checkInputValidity(inputElement, config) {
 }
 
  function handleValidForm(inputElement, config, errorElement) {
+  console.log(errorElement);
     inputElement.classList.remove(config.inputErrorClass);
     errorElement.classList.remove(config.errorClass);
     errorElement.textContent = '';
@@ -59,7 +60,8 @@ const toggleButtonState = (inputList, buttonElement, config) => {
     toggleButtonState(inputList, buttonElement, config);
 
     inputList.forEach((inputElement) => {
-      checkInputValidity(inputElement, config);
+      const errorElement = document.querySelector(`#${inputElement.id}-error`);
+      handleValidForm(inputElement, config, errorElement);
     });
   };
 
@@ -73,14 +75,14 @@ const toggleButtonState = (inputList, buttonElement, config) => {
     buttonElement.classList.remove(config.inactiveButtonClass);
   }
 
-  confiValidation = { 
+const confiValidation = { 
     formSelector : '.popup__form',
     inputSelector: '.popup__input',
     submitButtonSelector : '.popup__button', 
     inactiveButtonClass : 'popup__button_type_disabled',
     inputErrorClass : 'popup__input_type_error', 
     errorClass : 'popup__input-error_type_active',
-  };
+};
 
   enableValidation(confiValidation);
 
