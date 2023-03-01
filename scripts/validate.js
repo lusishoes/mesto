@@ -14,7 +14,6 @@ function enableValidation (config) {
             toggleButtonState(inputList, buttonElement, config);
             checkInputValidity(inputElement, config);
         });
-        
     });
   }   
 
@@ -34,7 +33,6 @@ function checkInputValidity(inputElement, config) {
 }
 
  function handleValidForm(inputElement, config, errorElement) {
-  console.log(errorElement);
     inputElement.classList.remove(config.inputErrorClass);
     errorElement.classList.remove(config.errorClass);
     errorElement.textContent = '';
