@@ -6,6 +6,7 @@ export class Card {
         this._templateSelector = templateSelector;
         this._openImagePopup = openImagePopup;
     }
+    
     // клонирую структуру template элемента 
     _getTemplate() {
         const cardElement = document
@@ -17,8 +18,8 @@ export class Card {
         return cardElement;
     }
 
-    _addheartIcon() {
-        this._element.querySelector('.elements__icon').classList.toggle('elements__icon_active');
+    _toggleLike() {
+        this._iconElement.classList.toggle('elements__icon_active');
     }
 
     _deleteCard() {
@@ -26,15 +27,15 @@ export class Card {
     }
 
     _setEventListeners() {
-        this._element.querySelector('.elements__icon').addEventListener('click', () => {
-            this._addheartIcon();
+        this._iconElement.addEventListener('click', () => {
+            this._toggleLike();
         });
 
-        this._element.querySelector('.elements__card-bucket').addEventListener('click', () => {
+        this._cardBucket.addEventListener('click', () => {
             this._deleteCard();
         });
 
-        this._element.querySelector('.elements__card-image').addEventListener('click', (e) => {
+        this._cardImage.addEventListener('click', (e) => {
             this._openImagePopup(e);
         });
     };
@@ -42,10 +43,16 @@ export class Card {
     // наполняю карточку свойствами 
     generateCard() {
         this._element = this._getTemplate();
+
+        this._iconElement = this._element.querySelector('.elements__icon');
+        this._cardImage = this._element.querySelector('.elements__card-image');
+        this._cardBucket = this._element.querySelector('.elements__card-bucket');
+        this._cardText = this._element.querySelector('.elements__text');
         this._setEventListeners();
-        this._element.querySelector('.elements__text').textContent = this._name;
-        this._element.querySelector('.elements__card-image').src = this._link;
-        this._element.querySelector('.elements__card-image').alt = this._alt;
+        
+        this._cardText.textContent = this._name;
+        this._cardImage.src = this._link;
+        this._cardImage.alt = this._alt;
     
         return this._element;
     }
