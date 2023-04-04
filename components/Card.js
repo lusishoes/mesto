@@ -1,10 +1,11 @@
 export class Card {
-    constructor(data, templateSelector, openImagePopup) {
+    constructor(data, { handleCardClick}, templateSelector) {
         this._name = data.name;
         this._link = data.link;
         this._alt = data.name;
         this._templateSelector = templateSelector;
-        this._openImagePopup = openImagePopup;
+        this._handleCardClick = handleCardClick;
+        
     }
     
     // клонирую структуру template элемента 
@@ -36,7 +37,7 @@ export class Card {
         });
 
         this._cardImage.addEventListener('click', (e) => {
-            this._openImagePopup(e);
+            this._handleCardClick(e);
         });
     };
 
