@@ -1,5 +1,4 @@
-
-// открытие/закртие попапа 
+ 
 export default class Popup {
     constructor(popupElement) {
     this._popupElement = document.querySelector(popupElement);

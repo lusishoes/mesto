@@ -6,11 +6,12 @@ export default class UserInfo {
     }
 
     getUserInfo() {
-        return {name: this._userName, occupation: this._userOccupation};
+        // возвращаем объект текущих значений
+        return {userName: this._userName, userOccupation: this._userOccupation};
     }
 
     setUserInfo(data) {
-        this._userName.textContent = data.userInputName;
-        this._userOccupation.textContent  = data.userInputOccupation;
+        this._userName.textContent = data.userName;
+        this._userOccupation.textContent  = data.userOccupation;
     }
 }

@@ -3,7 +3,6 @@
 import { Card } from "../components/Card.js";
 import { confiValidation, initialCards } from "../utils/constants.js";
 import { FormValidator } from "../components/FormValidator.js";
-import  Popup  from "../components/Popup.js";
 import  Section  from "../components/Section.js";
 import  PopupWithImage  from "../components/PicturePopup.js";
 import PopupWithForm from "../components/PopupWishForm.js";
@@ -119,54 +118,16 @@ const popupFormCard = new PopupWithForm(
           (item) => {
     // вот так обозначаем значения из формы 
     const data = {
-      userInputName: item.userName,
-      userInputOccupation: item.userOccupation,
+      userName: item.userName,
+      userOccupation: item.userOccupation,
      }
      userInfoElement.setUserInfo(data);
-    //  console.log(data);
-    //  cardSectionBlock.addItem(createCard(data));
+
    }
  });
 
     popupFormCard.setEventListeners();
     popupFormUserInfo.setEventListeners();
-// рендерю лист дефолтных карточек
-// const cardsList = new Section({
-//     data: initialCards,
-//     renderer: (item) => {
-//       const card = new Card({
-//         data: item,
-//         handleCardClick: () => {
-//           const pictureElement = new PopupWithImage(popupImageSection, item);
-//           pictureElement.setEventListeners();
-//           pictureElement.open();
-//         }
-//       }, '.elements__card-template');
-//       const cardElement = card.generateCard();
-//       cardsList.addItem(cardElement); // вызываем метод addItem после создания элемента карточки
-//     }
-//   }, '.elements');
-  
-//   cardsList.renderItems();
-
-// // рендерю форму с карточками 
-//   const popupFormCard = new PopupWithForm(
-//      '.popup_theme_add-card', {
-//     handleFormSubmit: (item) => {
-//       const card = new Card({
-//         data: item,
-//         handleCardClick: () => {
-//           const pictureElement = new PopupWithImage(popupImageSection, item);
-//           pictureElement.setEventListeners();
-//           pictureElement.open();
-//         }
-//       }, '.elements__card-template');
-//       const cardElement = card.generateCard();
-//       cardsList.addItem(cardElement);
-//     },
-//   });
-
- /*сюда до */
    
  // тут слушатель на кнопке добавления карточки
 popupWrapBtn.addEventListener('click', function() {
@@ -177,7 +138,7 @@ popupWrapBtn.addEventListener('click', function() {
 // тут слушатель на кнопке редактирования пользователя 
 editBtn.addEventListener('click', function() {
     popupFormUserInfo.open();
-    popupFormUserInfo.setUserInfo(userInfoElement.getUserInfo());
+    popupFormUserInfo.addInputValues(userInfoElement.getUserInfo())
     // popupInputName.value = nameInput.textContent;
     // popupInputOccupation.value = occupationInput.textContent;
     formValidators[popupFormProfile.getAttribute('name')].checkValidation();
