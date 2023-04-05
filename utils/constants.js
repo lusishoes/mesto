@@ -1,3 +1,10 @@
+export const editBtn = document.querySelector('.profile__edit-button');
+export const popupFormProfile = document.querySelector('.popup__form_theme_edit-profile');
+export const popupFormAddCard = document.querySelector('.popup__form_theme_add-card');
+export const popupWrapBtn = document.querySelector('.profile__add-button-wrap');
+export const formValidators = {};
+
+
 export const confiValidation = { 
     formSelector : '.popup__form',
     inputSelector: '.popup__input',
