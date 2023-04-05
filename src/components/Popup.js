@@ -26,7 +26,6 @@ export default class Popup {
     _handleClickClose = (e) => {
       if (e.target === this._popupElement) {
         this.close();
-        console.log(e.target );
       }
     };
   
