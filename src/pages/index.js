@@ -14,6 +14,7 @@
       popupWrapBtn,
       formValidators,
   } from "../utils/constants.js";
+  import '../pages/index.css';
 
 /*
 1. функция идущая параметром к Card принимает item -> 
@@ -78,10 +79,12 @@ const popupFormCard = new PopupWithForm('.popup_theme_add-card', {
         cardSectionBlock.addItem(createCard(data));
     }
 });
+
 const userInfoElement = new UserInfo({
     userName: '.profile__title',
     userOccupation: '.profile__occupation',
 });
+
 const popupFormUserInfo = new PopupWithForm('.popup_theme_edit-profile', {
     handleFormSubmit: (item) => {
         const data = {
@@ -100,6 +103,7 @@ popupWrapBtn.addEventListener('click', function() {
     popupFormCard.open();
     formValidators[popupFormAddCard.getAttribute('name')].checkValidation();
 });
+
 // тут слушатель на кнопке редактирования пользователя 
 editBtn.addEventListener('click', function() {
     popupFormUserInfo.open();

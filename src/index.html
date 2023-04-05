@@ -7,30 +7,31 @@
   <meta name="description" content="Страница с карточками мест">
   <meta name="keywords" content="Россия, путешествие, Карачаевск, гора Эльбрус, Домбай, Mesto">
   <meta name="author" content="Юра Гаврилов">
-  <link rel="stylesheet" href="./pages/index.css">
+  <!--<link rel="stylesheet" href="./pages/index.css">-->
   <title>Место - путешествия по России</title>
 </head>
 
 <body class="root">
   <header class="header">
-    <img src="./images/logo.svg" alt="логотип" class="header__logo">
+   
+    <img src="<%=require('./images/logo.svg')%>" alt="логотип" class="header__logo">
   </header>
   <main>
     <section class="profile">
-      <div class="profile__edit">
-        <img src="./images/Кусто.jpg" alt="Жак Ив Кусто" class="profile__image">
+      <div class="profile__edit"> 
+        <img src="<%=require('./images/Кусто.jpg')%>" alt="Жак Ив Кусто" class="profile__image">
         <div class="profile__data-edit">
           <div class="profile__name-edit">
             <h1 class="profile__title">Жак-Ив Кусто</h1>
             <button class="profile__edit-button" type="button">
-              <img src="./images/pencil.svg" alt="карандашик" class="profile__edit-image">
+              <img src="<%=require('./images/pencil.svg')%>" alt="карандашик" class="profile__edit-image">
             </button>
           </div>
           <h2 class="profile__occupation">Исследователь океана</h2>
         </div>
       </div>
       <button class="profile__add-button-wrap" type="button">
-        <img src="./images/Vector+.svg" class="profile__add-button" alt="кнопка добавить">
+        <img src="<%=require('./images/Vector+.svg')%>" class="profile__add-button" alt="кнопка добавить">
       </button>
     </section>
     <section class="elements">
@@ -38,7 +39,7 @@
   </main>
   <template class="elements__card-template">
     <article class="elements__card">
-      <img src="./images/Trash.svg" alt="корзина" class="elements__card-bucket">
+      <img src="<%=require('./images/Trash.svg')%>" alt="корзина" class="elements__card-bucket">
       <img alt="вид с места в карточке" src="#" class="elements__card-image">
       <div class="elements__description">
         <h2 class="elements__text"></h2>
@@ -116,7 +117,7 @@
       <h3 class="popup__image-signature"></h3>
     </div>
   </section>
-  <script type="module" src="./pages/index.js"></script>
+ <!---<script type="module" src="./pages/index.js"></script> -->
 </body>
 
 </html>
