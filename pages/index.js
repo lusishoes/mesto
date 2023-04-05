@@ -7,6 +7,7 @@ import  Popup  from "../components/Popup.js";
 import  Section  from "../components/Section.js";
 import  PopupWithImage  from "../components/PicturePopup.js";
 import PopupWithForm from "../components/PopupWishForm.js";
+import UserInfo from "../components/UserInfo.js";
 
 
 const editBtn = document.querySelector('.profile__edit-button');
@@ -28,10 +29,23 @@ const popupImageSignature = document.querySelector('.popup__image-signature');
 const popupImageBlock = document.querySelector('.popup__image-block');
 const formValidators = {};
 
-/**
- * 1. Отрисовать с помощью section карточки 
- */
+/*
+1. функция идущая параметром к Card принимает item -> 
+   который является объектом initialCards -> 
+   и на каждую карточку мы вешаем слушатель ->
+   при нажатии на пикчу -> этот самый объект передаем методу open
+   и из него высасываем свойства для нашего попапа
 
+2. функция идущая в в section принимает в себя -> 
+   каждый из объектов первого параметра экземпляра класса ->
+   в ее теле вызывется метода addItem ->
+   который принимает в себя третий параметр куда вставлять
+
+3. PopupWithForm первым параметром указываем попап откуда будем собирать инпуты ->
+   функция его принимает объект инпутов 
+*/
+
+// начинаем валидацию 
 const enableValidation = (config) => {
   const formList = Array.from(document.querySelectorAll(config.formSelector));
   formList.forEach((formElement) => {
@@ -47,6 +61,7 @@ enableValidation(confiValidation);
 
 const pictureElement = new PopupWithImage('.popup_theme_open-image');
 
+// функция создания карточки 
 const createCard = (item) => {
     const card = new Card(
       item,
@@ -62,6 +77,7 @@ const createCard = (item) => {
     return cardElement;
 }
 
+// создаем дефолтные 6 карточек
 const cardSectionBlock = new Section(
   {
       data: initialCards,
@@ -71,10 +87,11 @@ const cardSectionBlock = new Section(
   }, 
   '.elements'
   );
-
+// вызываем функцию добавления карточек
 cardSectionBlock.renderItems();
 
-  const popupFormCard = new PopupWithForm(
+// создается экземпляр формы 
+const popupFormCard = new PopupWithForm(
      '.popup_theme_add-card', 
      {
     handleFormSubmit: 
@@ -86,9 +103,33 @@ cardSectionBlock.renderItems();
       console.log(data);
       cardSectionBlock.addItem(createCard(data));
     }
-    });
+  });
+
+
+  const userInfoElement = new UserInfo({
+    userName: '.profile__title',
+    userOccupation: '.profile__occupation',
+  });
+
+
+  const popupFormUserInfo = new PopupWithForm(
+    '.popup_theme_edit-profile', 
+    {
+   handleFormSubmit: 
+          (item) => {
+    // вот так обозначаем значения из формы 
+    const data = {
+      userInputName: item.userName,
+      userInputOccupation: item.userOccupation,
+     }
+     userInfoElement.setUserInfo(data);
+    //  console.log(data);
+    //  cardSectionBlock.addItem(createCard(data));
+   }
+ });
 
     popupFormCard.setEventListeners();
+    popupFormUserInfo.setEventListeners();
 // рендерю лист дефолтных карточек
 // const cardsList = new Section({
 //     data: initialCards,
@@ -135,19 +176,20 @@ popupWrapBtn.addEventListener('click', function() {
 });
 // тут слушатель на кнопке редактирования пользователя 
 editBtn.addEventListener('click', function() {
-    openPopup(popupProfileSection);
-    popupInputName.value = nameInput.textContent;
-    popupInputOccupation.value = occupationInput.textContent;
+    popupFormUserInfo.open();
+    popupFormUserInfo.setUserInfo(userInfoElement.getUserInfo());
+    // popupInputName.value = nameInput.textContent;
+    // popupInputOccupation.value = occupationInput.textContent;
     formValidators[popupFormProfile.getAttribute('name')].checkValidation();
 });
 
 // слушайтель сабмита редактирования пользователя 
-popupFormProfile.addEventListener('submit', function(e) {
-    e.preventDefault(); 
-    nameInput.textContent =popupInputName.value;
-    occupationInput.textContent = popupInputOccupation.value;
-    closePopup(popupProfileSection);
-});
+// popupFormProfile.addEventListener('submit', function(e) {
+//     e.preventDefault(); 
+//     nameInput.textContent =popupInputName.value;
+//     occupationInput.textContent = popupInputOccupation.value;
+//     closePopup(popupProfileSection);
+// });
 
 
 

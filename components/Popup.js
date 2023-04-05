@@ -30,7 +30,7 @@ export default class Popup {
     };
   
     setEventListeners() {
-      this._buttonClose.addEventListener('click', this.close.bind(this)); //this.close.bind(this)
+      this._buttonClose.addEventListener('click', this.close.bind(this)); 
       this._popupElement.addEventListener('click', this._handleClickClose);
     }
   }

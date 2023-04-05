@@ -6,7 +6,7 @@ export default class PopupWithForm extends Popup{
         this._handleFormSubmit = handleFormSubmit;
       //  console.log(this._handleFormSubmit);
         this._popupForm = this._popupElement.querySelector('.popup__form');
-       // console.log(this._popupForm);
+      console.log(this._popupForm);
     }
 
     _getInputValues() {
@@ -28,7 +28,7 @@ export default class PopupWithForm extends Popup{
         // обработчик сабмита формы 
         this._popupForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            console.log(this._getInputValues());
+          //  console.log(this._getInputValues());
           // функция создания карточки, принимает объект с значениями инпутов
             this._handleFormSubmit(this._getInputValues());
             
@@ -36,16 +36,3 @@ export default class PopupWithForm extends Popup{
         });
     }
 }
-/**
- *           name="place-name" 
-          required
-        >
-        <span id="input-place-name-error" class="popup__input-error"></span>
-        <input
-          id="input-image-link" 
-          type="url" 
-          placeholder="Ссылка на картинку" 
-          class="popup__input popup__input_type_image-link" 
-          name="image-link"
- * 
- */
