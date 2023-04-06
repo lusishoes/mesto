@@ -7,14 +7,13 @@
   import { PopupWithImage }  from "../components/PicturePopup.js";
   import { PopupWithForm } from "../components/PopupWishForm.js";
   import { UserInfo } from "../components/UserInfo.js";
-  import {
-      editBtn,
-      popupFormProfile,
-      popupFormAddCard,
-      popupWrapBtn,
-      formValidators,
-  } from "../utils/constants.js";
   import '../pages/index.css';
+
+const editBtn = document.querySelector('.profile__edit-button');
+const popupFormProfile = document.querySelector('.popup__form_theme_edit-profile');
+const popupFormAddCard = document.querySelector('.popup__form_theme_add-card');
+const popupWrapBtn = document.querySelector('.profile__add-button-wrap');
+const formValidators = {};
 
 /*
 1. функция идущая параметром к Card принимает item -> 
@@ -43,18 +42,19 @@ const enableValidation = (config) => {
     });
 };
 enableValidation(confiValidation);
+
 const pictureElement = new PopupWithImage('.popup_theme_open-image');
 // функция создания карточки 
 const createCard = (item) => {
         const card = new Card(item, {
             handleCardClick: () => {
-                pictureElement.setEventListeners();
                 pictureElement.open(item);
             }
         }, '.elements__card-template', );
         const cardElement = card.generateCard();
         return cardElement;
     }
+    
     // создаем дефолтные 6 карточек
 const cardSectionBlock = new Section({
     data: initialCards,
@@ -95,19 +95,23 @@ const popupFormUserInfo = new PopupWithForm('.popup_theme_edit-profile', {
     }
 });
 
-popupFormCard.setEventListeners();
-popupFormUserInfo.setEventListeners();
+const hanlePopupFormEditUserData = () => { 
+    popupFormUserInfo.open(); 
+    popupFormUserInfo.addInputValues(userInfoElement.getUserInfo()) 
+    formValidators[popupFormProfile.getAttribute('name')].checkValidation(); 
+};
+
+const handlePopupFormAddCard  = () => {
+    popupFormCard.open(); 
+    formValidators[popupFormAddCard.getAttribute('name')].checkValidation(); 
+}
 
 // тут слушатель на кнопке добавления карточки
-popupWrapBtn.addEventListener('click', function() {
-    popupFormCard.open();
-    formValidators[popupFormAddCard.getAttribute('name')].checkValidation();
-});
+popupWrapBtn.addEventListener('click', handlePopupFormAddCard); 
 
-// тут слушатель на кнопке редактирования пользователя 
-editBtn.addEventListener('click', function() {
-    popupFormUserInfo.open();
-    popupFormUserInfo.addInputValues(userInfoElement.getUserInfo())
-    formValidators[popupFormProfile.getAttribute('name')].checkValidation();
-});
+// тут слушатель на кнопке редактирования пользователя  
+editBtn.addEventListener('click', hanlePopupFormEditUserData);
 
+pictureElement.setEventListeners();
+popupFormCard.setEventListeners();
+popupFormUserInfo.setEventListeners();
