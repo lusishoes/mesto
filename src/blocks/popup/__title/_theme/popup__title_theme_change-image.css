@@ -1,0 +1,11 @@
+.popup__title_theme_change-image {
+    margin-bottom: 38px;
+    margin-left: 36px;
+}
+
+
+@media (max-width: 768px) {
+    .popup__title_theme_change-image {
+        margin-left: 23px;
+    }
+}

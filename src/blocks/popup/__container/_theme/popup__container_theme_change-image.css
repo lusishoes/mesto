@@ -1,0 +1,5 @@
+.popup__container_theme_change-image {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
