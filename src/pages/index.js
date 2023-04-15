@@ -19,6 +19,7 @@ const popupProfileChangeImage = document.querySelector('.profile__image-change-b
 const userImage = document.querySelector('.profile__image');
 const userName = document.querySelector('.profile__title');
 const userOccupation = document.querySelector('.profile__occupation');
+const popupCloseIcon = document.querySelector('.popup__close-icon');
 const formValidators = {};
 
     const enableValidation = (config) => {
