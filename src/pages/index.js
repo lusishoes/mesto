@@ -69,18 +69,18 @@ const formValidators = {};
 
     // устанавливаю эти данные на страницу
     const setUserData = (data) => {
-        console.log(data); // добавить эту строку
+       // console.log(data); // добавить эту строку
         userImage.src = data.avatar;
         userName.textContent = data.name;
         userOccupation.textContent = data.about;
     }
-
 
     const cardSectionBlock = new Section({
         // тот объект по которому проходимся 
         // функция принимающая каждый из объектов data 
         renderer: (item) => {
             // добавляет их в elements
+            console.log(item);
             cardSectionBlock.addItem(createCard(item));
         }
     }, '.elements');
@@ -90,22 +90,14 @@ const formValidators = {};
     
     api.getInitialCards()
         .then((res) => {
-            cardSectionBlock.renderItems(res)
-        .then((res) => {
+           cardSectionBlock.renderItems(res)
+        }).then((res) => {
             console.log(res);
             cardSectionBlock.addItem(createCard(res));
+        }).catch((err) => {
+            console.log(err);
         })
-    //         const cardSectionBlock = new Section({
-    //             data: res,
-    //             renderer: (item) => {
-    //                 cardSectionBlock.addItem(createCard(item));
-    //             }
-    //         }, '.elements');
-    // // вызываем функцию добавления карточек
-    //     cardSectionBlock.renderItems();
-            //console.log(res)
-    })
-     
+    
         
 
     // Форма добавления новой карточки
