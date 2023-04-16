@@ -56,24 +56,10 @@ const formValidators = {};
                 }
             }, '.elements__card-template', );
             const cardElement = card.generateCard();
+            console.log(cardElement);
             return cardElement;
         }
-    
 
-    // создаем дефолтные 6 карточек
-    api.getInitialCards()
-        .then((res) => {
-            const cardSectionBlock = new Section({
-                data: res,
-                renderer: (item) => {
-                    cardSectionBlock.addItem(createCard(item));
-                }
-            }, '.elements');
-    // вызываем функцию добавления карточек
-            cardSectionBlock.renderItems();
-            //console.log(res)
-        })
-    
     // получаю данные пользователя    
     api.getUserData()
         .then((res) => {
@@ -89,17 +75,54 @@ const formValidators = {};
         userOccupation.textContent = data.about;
     }
 
+
+    const cardSectionBlock = new Section({
+        // тот объект по которому проходимся 
+        // функция принимающая каждый из объектов data 
+        renderer: (item) => {
+            // добавляет их в elements
+            cardSectionBlock.addItem(createCard(item));
+        }
+    }, '.elements');
+
+// вызываем функцию добавления карточек
+    
+    
+    api.getInitialCards()
+        .then((res) => {
+            cardSectionBlock.renderItems(res)
+        .then((res) => {
+            console.log(res);
+            cardSectionBlock.addItem(createCard(res));
+        })
+    //         const cardSectionBlock = new Section({
+    //             data: res,
+    //             renderer: (item) => {
+    //                 cardSectionBlock.addItem(createCard(item));
+    //             }
+    //         }, '.elements');
+    // // вызываем функцию добавления карточек
+    //     cardSectionBlock.renderItems();
+            //console.log(res)
+    })
+     
+        
+
     // Форма добавления новой карточки
     const popupFormCard = new PopupWithForm('.popup_theme_add-card', {
-        handleFormSubmit: ({ imageLink, placeName }) => {
+        handleFormSubmit: (value) => {
+            console.log(value);
             const data = {
-                link: imageLink,
-                name: placeName,
+                link: value.imageLink,
+                name: value.placeName,
             }
-            cardSectionBlock.addItem(createCard(data));
-        }
-    });
-
+            api.getCreatedCard(data)
+                .then((res) => {
+                    cardSectionBlock.addItem(createCard(res));
+                })
+            }
+        });
+    
     // Форма изменения данных пользователя 
     const popupFormUserInfo = new PopupWithForm('.popup_theme_edit-profile', {
         handleFormSubmit: (item) => {
