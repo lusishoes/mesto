@@ -60,7 +60,7 @@ export class Api {
             return Promise.reject(`Ошибка: ${res.status}`);
         })
     }
-
+    // удаление карточки 
     deleteCard(id) {
         return fetch(`${this._baseUrl}/cards/${id}`, {
             method: 'DELETE',
@@ -71,5 +71,19 @@ export class Api {
             }
             return Promise.reject(`Ошибка: ${res.status}`);
         })  
+    }
+
+    setUserProfileImage(avatar) {
+        return fetch(`${this._baseUrl}/users/me/avatar`, {
+            method: 'PATCH',
+            headers: this._headers,
+            body: JSON.stringify({
+                avatar: `${avatar}`,
+            })
+        }).then((res)=>{
+            if(!res.ok) {
+                return Promise.reject(`Ошибка: ${res.status}`);
+              }
+          }) 
     }
 }

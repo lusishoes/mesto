@@ -91,9 +91,6 @@ const formValidators = {};
     api.getInitialCards()
         .then((res) => {
            cardSectionBlock.renderItems(res)
-        }).then((res) => {
-            console.log(res);
-            cardSectionBlock.addItem(createCard(res));
         }).catch((err) => {
             console.log(err);
         })
@@ -131,9 +128,13 @@ const formValidators = {};
     //заготовка формы изменения картинки 
     const popupChangeProfileImage = new PopupWithForm('.popup_theme_change-image', {
         handleFormSubmit: (item) => {
-            console.log(item)
-            userImage.src = item;
+            const data = {
+                link: item.imageLink,
+            }
+           api.setUserProfileImage(data.link);
+            userImage.src = data.link;
         }
+        
     })
 
     // обработчик редактирования данных пользователя 
