@@ -48,3 +48,4 @@
 @import url(../blocks/popup/__title/_theme/popup__title_theme_change-image.css);
 @import url(../blocks/popup/__container/_theme/popup__container_theme_change-image.css);
 @import url(../blocks/popup/__button/_theme/popup__button_theme_change-image.css);
+@import url(../blocks/elements/__card-bucket/_type/elements__card-bucket_type-disabled.css);

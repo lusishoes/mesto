@@ -9,7 +9,7 @@ export class Section {
     }
     // отрисовываем каждый элемент на странице 
     renderItems(renderedItems) {
-
+      
       renderedItems.forEach((item) => {
           return this._renderer(item); 
       });

@@ -22,6 +22,7 @@ const userOccupation = document.querySelector('.profile__occupation');
 const popupCloseIcon = document.querySelector('.popup__close-icon');
 const formValidators = {};
 
+
     const enableValidation = (config) => {
         const formList = Array.from(document.querySelectorAll(config.formSelector));
         formList.forEach((formElement) => {
@@ -48,65 +49,66 @@ const formValidators = {};
         }
     });
 
+    //const userId = {};
+
     // функция создания карточки 
     const createCard = (item) => {
-            const card = new Card(item, {
-                handleCardClick: () => {
-                    pictureElement.open(item);
-                }
-            }, '.elements__card-template', );
-            const cardElement = card.generateCard();
-            console.log(cardElement);
-            return cardElement;
-        }
+        const card = new Card(item, {
+            handleCardClick: () => {
+                pictureElement.open(item);
+            },// передаем userId в объект опций
+        }, '.elements__card-template');
+        const cardElement = card.generateCard();
+        return cardElement;
+    }
 
-    // получаю данные пользователя    
-    api.getUserData()
-        .then((res) => {
-           // console.log(res); // добавить эту строку
-            setUserData(res);
-        });
+    Promise.all([api.getUserData(), api.getInitialCards()])
+            .then(([userResponse, cardsResponse]) => {
+                setUserData(userResponse);
+                // userId.id = userResponse;
+                // console.log(cardsResponse)
+                cardsResponse.forEach((card) => {
+                    card.userWhoOwnThis = userResponse._id;
+                })
+                console.log(cardsResponse);
+                cardSectionBlock.renderItems(cardsResponse);
+            }).catch((err) => {
+                console.log(err);
+            });
 
+    //console.log(userId);    
     // устанавливаю эти данные на страницу
     const setUserData = (data) => {
-       // console.log(data); // добавить эту строку
+        console.log(data); // добавить эту строку
+        
         userImage.src = data.avatar;
         userName.textContent = data.name;
         userOccupation.textContent = data.about;
     }
-
+    
     const cardSectionBlock = new Section({
         // тот объект по которому проходимся 
         // функция принимающая каждый из объектов data 
         renderer: (item) => {
             // добавляет их в elements
-            console.log(item);
+            
             cardSectionBlock.addItem(createCard(item));
         }
     }, '.elements');
 
-// вызываем функцию добавления карточек
-    
-    
-    api.getInitialCards()
-        .then((res) => {
-           cardSectionBlock.renderItems(res)
-        }).catch((err) => {
-            console.log(err);
-        })
-    
-        
-
     // Форма добавления новой карточки
     const popupFormCard = new PopupWithForm('.popup_theme_add-card', {
         handleFormSubmit: (value) => {
-            console.log(value);
+           // console.log(value);
             const data = {
                 link: value.imageLink,
                 name: value.placeName,
             }
             api.getCreatedCard(data)
                 .then((res) => {
+                    // полчаю объект с айди моим 
+                    // тут приходит айдишник карточек созданных нами -> идет в item и потом 
+                    console.log(res);
                     cardSectionBlock.addItem(createCard(res));
                 })
             }

@@ -45,7 +45,7 @@ export class Api {
     }
     // добавлени новой карточки 
     getCreatedCard(data) {
-        console.log(data);
+       // console.log(data);
         return fetch(`${this._baseUrl}/cards`, {
             method: 'POST',
             headers: this._headers,
