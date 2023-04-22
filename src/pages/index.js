@@ -1,13 +1,14 @@
 'use strict'
 
   import { Card } from "../components/Card.js";
-  import { confiValidation, initialCards } from "../utils/constants.js";
+  import { confiValidation } from "../utils/constants.js";
   import { FormValidator } from "../components/FormValidator.js";
   import { Section } from "../components/Section.js";
   import { PopupWithImage }  from "../components/PicturePopup.js";
   import { PopupWithForm } from "../components/PopupWishForm.js";
   import { UserInfo } from "../components/UserInfo.js";
   import { Api } from "../components/Api.js";
+  import { PopupWishConfirmation } from "../components/PopupWithConfirmation.js"
   import '../pages/index.css';
 
 const editBtn = document.querySelector('.profile__edit-button');
@@ -36,6 +37,9 @@ const formValidators = {};
 
     const pictureElement = new PopupWithImage('.popup_theme_open-image');
 
+    const popupDeleteCard = new PopupWishConfirmation('.popup_theme_delete-card');
+    popupDeleteCard.setEventListeners();
+
     const userInfoElement = new UserInfo({
         userName: '.profile__title',
         userOccupation: '.profile__occupation',
@@ -49,7 +53,7 @@ const formValidators = {};
         }
     });
 
-    //const userId = {};
+    const userId = {};
 
     // функция создания карточки 
     const createCard = (item) => {
@@ -57,9 +61,22 @@ const formValidators = {};
             handleCardClick: () => {
                 pictureElement.open(item);
             },// передаем userId в объект опций
-        }, '.elements__card-template');
+        }, deleteCard, '.elements__card-template');
         const cardElement = card.generateCard();
         return cardElement;
+
+        function deleteCard(item) {
+            console.log(item);
+            popupDeleteCard.setSubmit(() => {
+              api.deleteCard(item)
+                .then(() => {
+                    card.deleteCard();
+                    popupDeleteCard.close();
+                })
+                .catch((err) => console.log(err));
+            });
+            popupDeleteCard.open();
+        }
     }
 
     Promise.all([api.getUserData(), api.getInitialCards()])
@@ -68,6 +85,7 @@ const formValidators = {};
                 // userId.id = userResponse;
                 // console.log(cardsResponse)
                 cardsResponse.forEach((card) => {
+                    userId.id = userResponse._id;
                     card.userWhoOwnThis = userResponse._id;
                 })
                 console.log(cardsResponse);
@@ -109,6 +127,7 @@ const formValidators = {};
                     // полчаю объект с айди моим 
                     // тут приходит айдишник карточек созданных нами -> идет в item и потом 
                     console.log(res);
+                    res.userWhoOwnThis = userId.id;
                     cardSectionBlock.addItem(createCard(res));
                 })
             }
@@ -134,10 +153,13 @@ const formValidators = {};
                 link: item.imageLink,
             }
            api.setUserProfileImage(data.link);
-            userImage.src = data.link;
+           changeUserImage(data);
         }
-        
     })
+
+    const changeUserImage = (data) => {
+        userImage.src = data.link;
+    }
 
     // обработчик редактирования данных пользователя 
     const hanlePopupFormEditUserData = () => { 
