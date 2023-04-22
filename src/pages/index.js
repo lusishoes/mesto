@@ -61,12 +61,12 @@ const formValidators = {};
             handleCardClick: () => {
                 pictureElement.open(item);
             },// передаем userId в объект опций
-        }, deleteCard, '.elements__card-template');
+        }, deleteCard, setLike , deleteLike, '.elements__card-template');
         const cardElement = card.generateCard();
         return cardElement;
 
         function deleteCard(item) {
-            console.log(item);
+            // console.log(item);
             popupDeleteCard.setSubmit(() => {
               api.deleteCard(item)
                 .then(() => {
@@ -76,6 +76,22 @@ const formValidators = {};
                 .catch((err) => console.log(err));
             });
             popupDeleteCard.open();
+        }
+
+        function setLike(item) {
+           api.addLike(item)
+            .then((res) => {
+                console.log(res)
+                card.setCurrentLikesNumber(res);
+            })
+        }
+
+        function deleteLike(item) {
+            api.daleteLike(item)
+                .then((res) => {
+                    console.log(res);
+                    card.setCurrentLikesNumber(res);
+            })
         }
     }
 
