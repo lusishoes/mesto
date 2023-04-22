@@ -81,8 +81,9 @@ const formValidators = {};
         function setLike(item) {
            api.addLike(item)
             .then((res) => {
-                console.log(res)
+                 console.log(res)
                 card.setCurrentLikesNumber(res);
+                card.toggleLike;
             })
         }
 
@@ -91,6 +92,7 @@ const formValidators = {};
                 .then((res) => {
                     console.log(res);
                     card.setCurrentLikesNumber(res);
+                    card.toggleLike;
             })
         }
     }
@@ -104,7 +106,7 @@ const formValidators = {};
                     userId.id = userResponse._id;
                     card.userWhoOwnThis = userResponse._id;
                 })
-                console.log(cardsResponse);
+                // console.log(cardsResponse);
                 cardSectionBlock.renderItems(cardsResponse);
             }).catch((err) => {
                 console.log(err);
@@ -113,7 +115,7 @@ const formValidators = {};
     //console.log(userId);    
     // устанавливаю эти данные на страницу
     const setUserData = (data) => {
-        console.log(data); // добавить эту строку
+        //console.log(data); // добавить эту строку
         
         userImage.src = data.avatar;
         userName.textContent = data.name;
@@ -138,7 +140,7 @@ const formValidators = {};
                 link: value.imageLink,
                 name: value.placeName,
             }
-            api.getCreatedCard(data)
+        return api.getCreatedCard(data)
                 .then((res) => {
                     // полчаю объект с айди моим 
                     // тут приходит айдишник карточек созданных нами -> идет в item и потом 
@@ -146,6 +148,9 @@ const formValidators = {};
                     res.userWhoOwnThis = userId.id;
                     cardSectionBlock.addItem(createCard(res));
                 })
+                // .catch((err) => {
+                //     console.log(err);
+                // })
             }
         });
     
@@ -158,7 +163,12 @@ const formValidators = {};
             }
             userInfoElement.setUserInfo(data);
             //{userName: data.userName, userOccupation: data.userOccupation}
-            api.setUserInfo(data);
+                return api.setUserInfo(data)
+                    // .then((res) => {
+                    //     console.log(res)
+                    // }).catch((err) => {
+                    //     console.log(err)
+                    // }) 
         }
     });
 
@@ -168,8 +178,13 @@ const formValidators = {};
             const data = {
                 link: item.imageLink,
             }
-           api.setUserProfileImage(data.link);
            changeUserImage(data);
+           return api.setUserProfileImage(data.link)
+           .then(() => {
+                console.log('ok');
+            }).catch((err) => {
+                console.log(err);
+            })     
         }
     })
 

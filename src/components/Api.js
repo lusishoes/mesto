@@ -20,7 +20,7 @@ export class Api {
     // отправляем добавленную инфу 
     setUserInfo({userName, userOccupation}) {
         console.log(userName, userOccupation);
-        fetch(`${this._baseUrl}/users/me`, {
+        return fetch(`${this._baseUrl}/users/me`, {
             method: 'PATCH',
             headers: this._headers,
             body: JSON.stringify({

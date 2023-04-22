@@ -7,6 +7,7 @@ export class PopupWithForm extends Popup{
         this._popupForm = this._popupElement.querySelector('.popup__form');
         this._inputList = Array.from(this._popupElement.querySelectorAll('.popup__input'));
         this._formValues = {};
+        this._submitButton = this._popupElement.querySelector('.popup__button');
     }
 
     _getInputValues() {
@@ -33,11 +34,16 @@ export class PopupWithForm extends Popup{
         super.setEventListeners();
         // обработчик сабмита формы 
         this._popupForm.addEventListener('submit', (e) => {
+            const initialText = this._submitButton.textContent;
+            this._submitButton.textContent = 'Сохранение...';
             e.preventDefault();
+            console.log(this._getInputValues());
           // функция создания карточки, принимает объект с значениями инпутов
-            this._handleFormSubmit(this._getInputValues());
-            
-            this.close();
+            this._handleFormSubmit(this._getInputValues())
+                .then(() =>  this.close())
+                .finally(() => {
+                  this._submitButton.textContent = initialText;
+                })
         });
     }
 }

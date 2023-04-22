@@ -1,7 +1,7 @@
 export class Card {
     constructor(data, { handleCardClick }, deleteCard, setLike, deleteLike, templateSelector) {
        // this._userId =  userId; // айдишник карточек которые нам прислали 
-       // this._cardId = data._id; // айдишник нашей карточки созданной 
+        this._dataLike = data.likes;// айдишник нашей карточки созданной 
         this._ownerId = data.owner._id;
         this._cardId = data.userWhoOwnThis;
         //console.log('this._userId :', this._userId);
@@ -14,6 +14,8 @@ export class Card {
       //  console.log('this._myCardId :', this._myCardId);
         this._setLike = setLike;
         this._deleteLike = deleteLike;
+        //console.log(data);
+        this._data = data; 
 
         this._templateSelector = templateSelector;
         this._handleCardClick = handleCardClick;
@@ -30,18 +32,40 @@ export class Card {
     
         return cardElement;
     }
-
-    setCurrentLikesNumber(data) {
-        this._likesNumber = data.likes.length;
-        this._likesCounter.textContent  = this._likesNumber;
+    // проверяем на наличие лайка
+    _checkCardLike() {
+        //console.log(this._dataLike);
+        return this._dataLike.some(elem => elem._id === this._cardId);
+        //console.log(this._data);
+        //return this._dataLike.some(elem => console.log(elem));
+        //  elem._id === this._cardId
     }
 
-    _toggleLike() {
-        if(this._iconElement.classList.contains('elements__icon_active')){
+    setCurrentLikesNumber(element) {
+       // console.log(element); // получаю массив с тем кто лайкнул карточки и инфу о карточке
+        this._likesNumber  = element.likes.length; // беру из него кол-во того кто сколько раз лайкнул
+        //this._likesCounter.textContent  = this._likesNumber;
+        if(this._likesNumber.length === 0) {
+            this._likesCounter.textContent = '0';
+        } else {
+            this._likesCounter.textContent = this._likesNumber ;
+        }
+
+        if(this._checkCardLike()) {
+            this._iconElement.classList.add('elements__icon_active');
+        } else{
             this._iconElement.classList.remove('elements__icon_active');
+        }
+
+    }
+
+    toggleLike() {
+        if(this._checkCardLike()){
+           // this._iconElement.classList.remove('elements__icon_active');
+          // this._iconElement.classList.remove('elements__icon_active');
             this._deleteLike(this.userId);
         } else {
-            this._iconElement.classList.add('elements__icon_active');
+           // this._iconElement.classList.add('elements__icon_active');
             this._setLike(this.userId);
         }
     }
@@ -52,7 +76,7 @@ export class Card {
 
     _setEventListeners() {
         this._iconElement.addEventListener('click', () => {
-            this._toggleLike();
+            this.toggleLike();
         });
 
         this._cardBucket.addEventListener('click', () => {
@@ -75,8 +99,9 @@ export class Card {
         this._cardBucket = this._element.querySelector('.elements__card-bucket');
         this._cardText = this._element.querySelector('.elements__text');
         this._setEventListeners();
+        this.setCurrentLikesNumber(this._data);
         
-        
+
         if (this._cardId !== this._ownerId) {
             this._element.querySelector('.elements__card-bucket').classList.add('elements__card-bucket_type-disabled');
           } else {
