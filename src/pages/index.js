@@ -85,7 +85,8 @@ const formValidators = {};
                 console.log(res);
                 //card.checkCardLike();
                 card.setCurrentLikesNumber(res);
-                
+            }).catch((err) => {
+                console.log(err);
             })
         }
         // 4 получаем айдишник карточки и отправляем его на сервер
@@ -95,9 +96,10 @@ const formValidators = {};
                 .then((res) => {
                  console.log(res);
                    //card.checkCardLike();
-                    card.setCurrentLikesNumber(res);
-                    
-            })
+                    card.setCurrentLikesNumber(res);    
+                }).catch((err) => {
+                    console.log(err);
+                })
         }
     }
 
@@ -112,9 +114,9 @@ const formValidators = {};
                 })
                 // console.log(cardsResponse);
                 cardSectionBlock.renderItems(cardsResponse);
-            }).catch((err) => {
-                console.log(err);
-            });
+                }).catch((err) => {
+                    console.log(err);
+                });
 
     //console.log(userId);    
     // устанавливаю эти данные на страницу
