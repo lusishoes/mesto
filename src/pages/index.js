@@ -20,7 +20,6 @@ const popupProfileChangeImage = document.querySelector('.profile__image-change-b
 const userImage = document.querySelector('.profile__image');
 const userName = document.querySelector('.profile__title');
 const userOccupation = document.querySelector('.profile__occupation');
-const popupCloseIcon = document.querySelector('.popup__close-icon');
 const formValidators = {};
 
 
@@ -60,13 +59,12 @@ const formValidators = {};
         const card = new Card(item, {
             handleCardClick: () => {
                 pictureElement.open(item);
-            },// передаем userId в объект опций
+            },
         }, deleteCard, setLike , deleteLike, '.elements__card-template');
         const cardElement = card.generateCard();
         return cardElement;
 
         function deleteCard(item) {
-            // console.log(item);
             popupDeleteCard.setSubmit(() => {
               api.deleteCard(item)
                 .then(() => {
@@ -95,7 +93,6 @@ const formValidators = {};
             // приходит ответ от сервера 
                 .then((res) => {
                  console.log(res);
-                   //card.checkCardLike();
                     card.setCurrentLikesNumber(res);    
                 }).catch((err) => {
                     console.log(err);
@@ -106,23 +103,17 @@ const formValidators = {};
     Promise.all([api.getUserData(), api.getInitialCards()])
             .then(([userResponse, cardsResponse]) => {
                 setUserData(userResponse);
-                // userId.id = userResponse;
-                // console.log(cardsResponse)
                 cardsResponse.forEach((card) => {
                     userId.id = userResponse._id;
                     card.userWhoOwnThis = userResponse._id;
                 })
-                // console.log(cardsResponse);
                 cardSectionBlock.renderItems(cardsResponse);
                 }).catch((err) => {
                     console.log(err);
                 });
 
-    //console.log(userId);    
     // устанавливаю эти данные на страницу
-    const setUserData = (data) => {
-        //console.log(data); // добавить эту строку
-        
+    const setUserData = (data) => {  
         userImage.src = data.avatar;
         userName.textContent = data.name;
         userOccupation.textContent = data.about;
@@ -133,7 +124,6 @@ const formValidators = {};
         // функция принимающая каждый из объектов data 
         renderer: (item) => {
             // добавляет их в elements
-            
             cardSectionBlock.addItem(createCard(item));
         }
     }, '.elements');
@@ -141,7 +131,6 @@ const formValidators = {};
     // Форма добавления новой карточки
     const popupFormCard = new PopupWithForm('.popup_theme_add-card', {
         handleFormSubmit: (value) => {
-           // console.log(value);
             const data = {
                 link: value.imageLink,
                 name: value.placeName,
@@ -150,7 +139,6 @@ const formValidators = {};
                 .then((res) => {
                     // полчаю объект с айди моим 
                     // тут приходит айдишник карточек созданных нами -> идет в item и потом 
-                  //  console.log(res);
                     res.userWhoOwnThis = userId.id;
                     cardSectionBlock.addItem(createCard(res));
                 }).catch((err) => {
@@ -167,7 +155,6 @@ const formValidators = {};
                 userOccupation: item.userOccupation,
             }
             userInfoElement.setUserInfo(data);
-            //{userName: data.userName, userOccupation: data.userOccupation}
                 return api.setUserInfo(data)
                     .then((res) => {
                         console.log(res)
