@@ -77,22 +77,26 @@ const formValidators = {};
             });
             popupDeleteCard.open();
         }
-
+        // 4 получаем айдишник карточки и отправляем его на сервер
         function setLike(item) {
            api.addLike(item)
+           // приходит ответ от сервера 
             .then((res) => {
-                 console.log(res)
+                console.log(res);
+                //card.checkCardLike();
                 card.setCurrentLikesNumber(res);
-                card.toggleLike;
+                
             })
         }
-
+        // 4 получаем айдишник карточки и отправляем его на сервер
         function deleteLike(item) {
             api.daleteLike(item)
+            // приходит ответ от сервера 
                 .then((res) => {
-                    console.log(res);
+                 console.log(res);
+                   //card.checkCardLike();
                     card.setCurrentLikesNumber(res);
-                    card.toggleLike;
+                    
             })
         }
     }
@@ -144,13 +148,12 @@ const formValidators = {};
                 .then((res) => {
                     // полчаю объект с айди моим 
                     // тут приходит айдишник карточек созданных нами -> идет в item и потом 
-                    console.log(res);
+                  //  console.log(res);
                     res.userWhoOwnThis = userId.id;
                     cardSectionBlock.addItem(createCard(res));
+                }).catch((err) => {
+                    console.log(err);
                 })
-                // .catch((err) => {
-                //     console.log(err);
-                // })
             }
         });
     
@@ -164,11 +167,11 @@ const formValidators = {};
             userInfoElement.setUserInfo(data);
             //{userName: data.userName, userOccupation: data.userOccupation}
                 return api.setUserInfo(data)
-                    // .then((res) => {
-                    //     console.log(res)
-                    // }).catch((err) => {
-                    //     console.log(err)
-                    // }) 
+                    .then((res) => {
+                        console.log(res)
+                    }).catch((err) => {
+                        console.log(err)
+                    }) 
         }
     });
 

@@ -32,41 +32,49 @@ export class Card {
     
         return cardElement;
     }
-    // проверяем на наличие лайка
-    _checkCardLike() {
-        //console.log(this._dataLike);
-        return this._dataLike.some(elem => elem._id === this._cardId);
-        //console.log(this._data);
-        //return this._dataLike.some(elem => console.log(elem));
-        //  elem._id === this._cardId
+    // 3 
+    // проверяем на наличие лайка моего лайка на карточке
+    checkCardLike() {
+       // console.log(Boolean(this._dataLike.find(elem => elem._id === this._cardId)));
+        return Boolean(this._dataLike.find((elem) => elem._id === this._cardId))
     }
 
+    // объект с установленным мною лайком
+    // либо убраным лайком 
     setCurrentLikesNumber(element) {
-       // console.log(element); // получаю массив с тем кто лайкнул карточки и инфу о карточке
-        this._likesNumber  = element.likes.length; // беру из него кол-во того кто сколько раз лайкнул
-        //this._likesCounter.textContent  = this._likesNumber;
-        if(this._likesNumber.length === 0) {
+        // устанавливаю количество лайков на карточке
+        this._dataLike  = element.likes; 
+        if (this._dataLike.length === 0) {
             this._likesCounter.textContent = '0';
         } else {
-            this._likesCounter.textContent = this._likesNumber ;
+            this._likesCounter.textContent = this._dataLike.length;
         }
-
-        if(this._checkCardLike()) {
+        // проверяю есть ли мой лайк
+        if(this.checkCardLike()) {
+            // если да добавляю сердечко
             this._iconElement.classList.add('elements__icon_active');
-        } else{
+            //console.log('active');
+        } else {
+            // если нет убираю
             this._iconElement.classList.remove('elements__icon_active');
-        }
-
+            //console.log('not active');
+        }     
     }
 
+    // 2 
+    // при клике на седце вызывается этот метод
     toggleLike() {
-        if(this._checkCardLike()){
+        // если есть мой лайк 
+        if (this.checkCardLike()) {
+            // то лайк удаляется с карты у которой этот айдишник
            // this._iconElement.classList.remove('elements__icon_active');
-          // this._iconElement.classList.remove('elements__icon_active');
             this._deleteLike(this.userId);
+           // иначе
         } else {
-           // this._iconElement.classList.add('elements__icon_active');
+            // лайк ставится 
+            //this._iconElement.classList.add('elements__icon_active');
             this._setLike(this.userId);
+          
         }
     }
 
@@ -75,8 +83,18 @@ export class Card {
     }
 
     _setEventListeners() {
+        // 1
         this._iconElement.addEventListener('click', () => {
+           // console.log('1')
             this.toggleLike();
+           // this._checkCardLike()
+        //    console.log(this._ownerId); // айди владельца карты 
+         // console.log(this.userId); // айди самой карты 
+        //    console.log(this._data); // сама карта с массивом тех кто поставил лайк и инфой о владельце
+        //    console.log(this._dataLike); // массив с объектом пользователей кто поставил лайк
+        //    console.log(this._cardId); // мой айдишник 
+        //    console.log(Boolean(this._dataLike.find(elem => elem._id === this._cardId))); // получаю тру или фалс в зависимости от того есть ли мой лайк на пикче
+        //    console.log(this._checkCardLike()); // тот же вызов что и выше 
         });
 
         this._cardBucket.addEventListener('click', () => {
@@ -112,7 +130,7 @@ export class Card {
         this._cardText.textContent = this._name;
         this._cardImage.src = this._link;
         this._cardImage.alt = this._alt;
-        this._likesCounter.textContent = this._likes.length;
+       // this._likesCounter.textContent = this._likes.length;
         //console.log(this._element);
         return this._element;
     }
