@@ -8,6 +8,7 @@ export class PopupWithForm extends Popup{
         this._inputList = Array.from(this._popupElement.querySelectorAll('.popup__input'));
         this._formValues = {};
         this._submitButton = this._popupElement.querySelector('.popup__button');
+        
     }
 
     _getInputValues() {
@@ -40,7 +41,9 @@ export class PopupWithForm extends Popup{
             console.log(this._getInputValues());
           // функция создания карточки, принимает объект с значениями инпутов
             this._handleFormSubmit(this._getInputValues())
-                .then(() =>  this.close())
+                // .then(() => console.log('все ок'))
+                .then(() => console.log('все ок')) //this.close()
+                .catch((err) => console.log(`все не ок, ошибка: ${err}`))
                 .finally(() => {
                   this._submitButton.textContent = initialText;
                 })

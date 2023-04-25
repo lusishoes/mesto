@@ -18,20 +18,20 @@ export class Api {
     }
 
     // отправляем добавленную инфу 
-    setUserInfo({userName, userOccupation}) {
-        console.log(userName, userOccupation);
+    setUserInfo({name, about}) { //userName, userOccupation
+        console.log(name, about);
         return fetch(`${this._baseUrl}/users/me`, {
             method: 'PATCH',
             headers: this._headers,
             body: JSON.stringify({
-                name: `${userName}`,
-                about: `${userOccupation}`
+                name: `${name}`,
+                about: `${about}`
             })
         }).then(this._handleResponse);
     }
     // добавлени новой карточки 
     getCreatedCard(data) {
-       // console.log(data);
+        console.log(data);
         return fetch(`${this._baseUrl}/cards`, {
             method: 'POST',
             headers: this._headers,
@@ -51,6 +51,7 @@ export class Api {
     }
 
     setUserProfileImage(avatar) {
+        console.log(avatar);
         return fetch(`${this._baseUrl}/users/me/avatar`, {
             method: 'PATCH',
             headers: this._headers,

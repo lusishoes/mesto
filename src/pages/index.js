@@ -42,6 +42,7 @@ const formValidators = {};
     const userInfoElement = new UserInfo({
         userName: '.profile__title',
         userOccupation: '.profile__occupation',
+        userAvatar: '.profile__image',
     });
 
     const api = new Api({
@@ -67,7 +68,8 @@ const formValidators = {};
         function deleteCard(item) {
             popupDeleteCard.setSubmit(() => {
               api.deleteCard(item)
-                .then(() => {
+                .then((res) => {
+                    console.log(res);
                     card.deleteCard();
                     popupDeleteCard.close();
                 })
@@ -114,9 +116,8 @@ const formValidators = {};
 
     // устанавливаю эти данные на страницу
     const setUserData = (data) => {  
-        userImage.src = data.avatar;
-        userName.textContent = data.name;
-        userOccupation.textContent = data.about;
+        userInfoElement.setUserInfo(data);
+        userInfoElement.setUserAvatar(data);
     }
     
     const cardSectionBlock = new Section({
@@ -137,10 +138,12 @@ const formValidators = {};
             }
         return api.getCreatedCard(data)
                 .then((res) => {
+                    console.log(res);
                     // полчаю объект с айди моим 
                     // тут приходит айдишник карточек созданных нами -> идет в item и потом 
                     res.userWhoOwnThis = userId.id;
                     cardSectionBlock.addItem(createCard(res));
+                    popupFormCard.close();
                 }).catch((err) => {
                     console.log(err);
                 })
@@ -150,38 +153,51 @@ const formValidators = {};
     // Форма изменения данных пользователя 
     const popupFormUserInfo = new PopupWithForm('.popup_theme_edit-profile', {
         handleFormSubmit: (item) => {
+            console.log(item);
             const data = {
-                userName: item.userName,
-                userOccupation: item.userOccupation,
+                // userName: item.userName,
+                // userOccupation: item.userOccupation,
+                name: item.userName,
+                about: item.userOccupation,
             }
-            userInfoElement.setUserInfo(data);
+            //userInfoElement.setUserInfo(data);
                 return api.setUserInfo(data)
                     .then((res) => {
-                        console.log(res)
+                        console.log(res);
+                        userInfoElement.setUserInfo(data);
+                        popupFormUserInfo.close();
                     }).catch((err) => {
                         console.log(err)
                     }) 
         }
     });
-
+    
     //заготовка формы изменения картинки 
     const popupChangeProfileImage = new PopupWithForm('.popup_theme_change-image', {
         handleFormSubmit: (item) => {
             const data = {
                 link: item.imageLink,
             }
-           changeUserImage(data);
-           return api.setUserProfileImage(data.link)
-           .then(() => {
-                console.log('ok');
-            }).catch((err) => {
-                console.log(err);
-            })     
-        }
-    })
+            console.log(data)
+           //changeUserImage(data);
+           return api.setUserProfileImage(data.link) 
+                .then(() => {
+                    console.log('привет');
+                        changeUserImage(data);                        
+                        popupChangeProfileImage.close();
+                    }).catch((err) => {
+                        console.log(err);
+                    })     
+                }
+            });
 
     const changeUserImage = (data) => {
-        userImage.src = data.link;
+        console.log(data);
+        const info = {
+            avatar: data.link,
+        }
+       // userImage.src = data.link;
+        userInfoElement.setUserAvatar(info);
     }
 
     // обработчик редактирования данных пользователя 

@@ -13,10 +13,9 @@ export class PopupWishConfirmation extends Popup {
         super.setEventListeners();
         this._formElement = this._popupElement.querySelector('.popup__container');
         this._formElement.addEventListener('submit', (e) => {
-            
             e.preventDefault();
             this._submitElement();
-            this.close();
+            //this.close();
         });
     }
 }
