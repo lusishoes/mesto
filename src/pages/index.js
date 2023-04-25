@@ -196,7 +196,7 @@ const formValidators = {};
         const info = {
             avatar: data.link,
         }
-       // userImage.src = data.link;
+       // userImage.src = data.link
         userInfoElement.setUserAvatar(info);
     }
 
